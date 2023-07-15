@@ -409,11 +409,11 @@
       // from the form values create the json/url to request the data from the db
       let f = document.querySelector("#search-form");
       let url = urlstub + "getSummary?";
-      if (f.sDiscourse.value) url += "discourse=" + f.sDiscourse.value + "&";
-      if (f.sTelegram.value) url += "telegram=" + f.sTelegram.value + "&";
-      if (f.iBrandFilter.selectedIndex > 0) url += "brand=" + f.iBrandFilter.value + "&";
-      if (f.sModel.value) url += "model=" + f.sModel.value + "&";
-      if (f.sWas.value) url += "was=" + f.sWas.value;
+      if (f.sDiscourse.value) url += "DiscourseID=" + f.sDiscourse.value + "&";
+      if (f.sTelegram.value) url += "TelegramID=" + f.sTelegram.value + "&";
+      if (f.iBrandFilter.selectedIndex > 0) url += "setBrand_TBrand=" + f.iBrandFilter.value + "&";
+      if (f.sModel.value) url += "MachineModel=" + f.sModel.value + "&";
+      if (f.sWas.value) url += "WASType=" + f.sWas.value;
 
       // request data from the api with fetch, like:
       //CORS issue to solve
@@ -436,23 +436,22 @@
       //display the data table
       document.querySelector("table.data-table").classList.remove("d-none");
 
-      let t = document.querySelector("#data-table");
-      t.innerHTML = "";// Reset the table
+      // let t = document.querySelector("#data-table");
+      // t.innerHTML = "";// Reset the table
 
 
       //add capabilities to retrieve and show details from a record
       document.querySelectorAll("#data-table > tr").forEach(el => {
         el.addEventListener("click", e => {
           showRecord(el.dataset.id);
-          //showR();//example to simulate some dummy data
         });
       });
 
     }
 
     function showRecord(id) {
-      let url = urlstub + "getDetail?uniqueID=4"; // + id
-      url = urlstub + "getDetail";
+      //let url = urlstub + "getDetail?uniqueID=5"; // + id
+      let url = urlstub + "getDetail?uniqueID=" + id;
       console.log(url);
 
       /* CORS issue to solve */
@@ -500,240 +499,6 @@
           myModal.show();
 
         }).catch(console.error);
-    }
-
-    function showR() {
-      //the fist variable has some corrupt fields remove, the database should be reviewed
-      let data = `{
-  "setDisplay_colorFieldNight": "60, 60, 60",
-  "setAS_wasOffset": "3",
-  "setMenu_isSpeedoOn": "True",
-  "setColor_sec03": "8, 243, 8",
-  "setColor_sec13": "253, 241, 144",
-  "setMenu_isCompassOn": "True",
-  "setMenu_isSideGuideLines": "True",
-  "id": "308f013e-a571-4ce0-a2ea-ba896f5e52f9",
-  "setSound_isAutoSteerOn": "True",
-  "setColor_sec07": "144, 36, 246",
-  "setDisplay_isStartFullScreen": "False",
-  "setMenu_isSimulatorOn": "True",
-  "setDisplay_camZoom": "8.511114673536",
-  "setAS_isAutoSteerAutoOn": "False",
-  "setF_culture": "en",
-  "setF_isWorkSwitchActiveLow": "True",
-  "setColor_sec01": "249, 22, 10",
-  "uniqueID": 1,
-  "setColor_sec06": "0, 252, 246",
-  "setBrand_TBrand": "Massey",
-  "setDisplay_colorTextDay": "10, 10, 20",
-  "setDisplay_colorFieldDay": "130, 130, 150",
-  "setTram_isTramOnBackBuffer": "True",
-  "setMenu_isGridOn": "True",
-  "setDisplay_camPitch": "-63",
-  "setDisplay_customColors": "-127744,-12299010,-16190712,-1505559,-3621034,-16712458,-7330570,-1546731,-89942,-3289866,-2756674,-538377,-134768,-4457734,-1848839,-530985",
-  "setAS_minSteerPWM": "25",
-  "setMenu_isOGLZoomOn": "0",
-  "setAS_highSteerPWM": "120",
-  "setColor_sec10": "205, 204, 246",
-  "setAS_isConstantContourOn": "False",
-  "setDisplay_panelSimLocation": "452, 930",
-  "setSound_isUturnOn": "True",
-  "setIMU_isReverseOn": "False",
-  "setColor_sec16": "247, 229, 215",
-  "setDisplay_isDayMode": "True",
-  "setIMU_rollZero": "0",
-  "setColor_sec14": "187, 250, 250",
-  "setDisplay_isTermsAccepted": "True",
-  "setColor_sec02": "68, 84, 254",
-  "setF_UserTotalArea": "36917.631723324484",
-  "setDisplay_isKeyboardOn": "False",
-  "setDisplay_colorNightFrame": "50, 50, 65",
-  "setAS_lowSteerPWM": "30",
-  "setColor_sec15": "227, 201, 249",
-  "setDisplay_colorVehicle": "White",
-  "OwnerHash": "4d079bc9aaf244a11984bbdf515a7b54ffc650fa3a5036cf2bf49c9488af8736",
-  "setColor_sec09": "255, 160, 170",
-  "setIMU_invertRoll": "False",
-  "setColor_sec04": "233, 6, 233",
-  "setColor_sec08": "232, 102, 21",
-  "setDisplay_colorDayFrame": "210, 210, 230",
-  "setGPS_isRTK": "False",
-  "setIMU_isDualAsIMU": "True",
-  "setDisplay_colorTextNight": "230, 230, 230",
-  "setF_isWorkSwitchEnabled": "True",
-  "setMenu_isMetric": "True",
-  "setF_isRemoteWorkSystemOn": "True",
-  "setHeadland_isSectionControlled": "False",
-  "setColor_sec12": "247, 200, 247",
-  "setWindow_Size": "1652, 990",
-  "setGPS_isRTK_KillAutoSteer": "False",
-  "setGPS_SimLongitude": "-111.15933325233",
-  "setAS_sideHillComp": "0",
-  "setColor_sec05": "200, 191, 86",
-  "setBrand_HBrand": "AGOpenGPS",
-  "setBrand_WDBrand": "AGOpenGPS",
-  "setDisplay_isTextureOn": "True",
-  "setMenu_isSkyOn": "True",
-  "setGPS_SimLatitude": "53.438258345356",
-  "setDisplay_colorSectionsDay": "27, 151, 160",
-  "setDisplay_isAutoDayNight": "False",
-  "setF_isSteerWorkSwitchEnabled": "True",
-  "setF_isWorkSwitchManualSections": "False",
-  "setIMU_fusionWeight": "0.06",
-  "setAS_countsPerDegree": "163",
-  "setWindow_Location": "1229, 233",
-  "setAS_uTurnSmoothing": "14",
-  "setColor_sec11": "213, 239, 190",
-  "setF_CurrentDir": "fgh ",
-  "setAS_Kp": "50",
-  "setIMU_rollFilter": "0.5",
-  "setWindow_Maximized": "False",
-  "setMenu_isLightbarOn": "True",
-  "setWindow_Minimized": "False",
-  "setGPS_headingFromWhichSource": "Fix",
-  "setMenu_isPureOn": "True",
-  "setF_isSteerWorkSwitchManualSections": "False",
-  "setAS_ackerman": "100",
-  "setSound_isHydLiftOn": "True",
-  "_rid": "YrUsAIDd3y06AAAAAAAAAA==",
-  "_self": "dbs/YrUsAA==/colls/YrUsAIDd3y0=/docs/YrUsAIDd3y06AAAAAAAAAA==/",
-  "_attachments": "attachments/",
-  "_ts": 1688237940,
-  "Etag": null,
-  "ResourceId": "YrUsAIDd3y06AAAAAAAAAA==",
-  "Timestamp": null,
-  "Uri": "dbs/YrUsAA==/colls/YrUsAIDd3y0=/docs/YrUsAIDd3y06AAAAAAAAAA==/",
-  "Attachments": "attachments/"
-}`;
-      let da = `{
-  "setDisplay_colorFieldNight": "60, 60, 60",
-  "setAS_wasOffset": "3",
-  "setMenu_isSpeedoOn": "True",
-  "setColor_sec03": "8, 243, 8",
-  "setColor_sec13": "253, 241, 144",
-  "setMenu_isCompassOn": "True",
-  "setMenu_isSideGuideLines": "True",
-  "id": "308f013e-a571-4ce0-a2ea-ba896f5e52f9",
-  "setSound_isAutoSteerOn": "True",
-  "setColor_sec07": "144, 36, 246",
-  "setDisplay_isStartFullScreen": "False",
-  "setMenu_isSimulatorOn": "True",
-  "setDisplay_camZoom": "8.511114673536",
-  "setAS_isAutoSteerAutoOn": "False",
-  "setF_culture": "en",
-  "setF_isWorkSwitchActiveLow": "True",
-  "setColor_sec01": "249, 22, 10",
-  "uniqueID": 1,
-  "setColor_sec06": "0, 252, 246",
-  "setBrand_TBrand": "Massey",
-  "setF_workingDirectory": "C:\\Users\\andre\\OneDrive\\Documents\\AgOpenGPS",
-  "setDisplay_colorTextDay": "10, 10, 20",
-  "setDisplay_colorFieldDay": "130, 130, 150",
-  "setTram_isTramOnBackBuffer": "True",
-  "setMenu_isGridOn": "True",
-  "setDisplay_camPitch": "-63",
-  "setDisplay_customColors": "-127744,-12299010,-16190712,-1505559,-3621034,-16712458,-7330570,-1546731,-89942,-3289866,-2756674,-538377,-134768,-4457734,-1848839,-530985",
-  "setAS_minSteerPWM": "25",
-  "setMenu_isOGLZoomOn": "0",
-  "setAS_highSteerPWM": "120",
-  "setColor_sec10": "205, 204, 246",
-  "setAS_isConstantContourOn": "False",
-  "setDisplay_panelSimLocation": "452, 930",
-  "setSound_isUturnOn": "True",
-  "setIMU_isReverseOn": "False",
-  "setColor_sec16": "247, 229, 215",
-  "setDisplay_isDayMode": "True",
-  "setIMU_rollZero": "0",
-  "setColor_sec14": "187, 250, 250",
-  "setDisplay_isTermsAccepted": "True",
-  "setColor_sec02": "68, 84, 254",
-  "setF_UserTotalArea": "36917.631723324484",
-  "setDisplay_isKeyboardOn": "False",
-  "setDisplay_colorNightFrame": "50, 50, 65",
-  "setAS_lowSteerPWM": "30",
-  "setColor_sec15": "227, 201, 249",
-  "setDisplay_colorVehicle": "White",
-  "OwnerHash": "4d079bc9aaf244a11984bbdf515a7b54ffc650fa3a5036cf2bf49c9488af8736",
-  "setColor_sec09": "255, 160, 170",
-  "setIMU_invertRoll": "False",
-  "setColor_sec04": "233, 6, 233",
-  "setColor_sec08": "232, 102, 21",
-  "setDisplay_colorDayFrame": "210, 210, 230",
-  "setGPS_isRTK": "False",
-  "setIMU_isDualAsIMU": "True",
-  "setDisplay_colorTextNight": "230, 230, 230",
-  "setF_isWorkSwitchEnabled": "True",
-  "setMenu_isMetric": "True",
-  "setF_isRemoteWorkSystemOn": "True",
-  "setHeadland_isSectionControlled": "False",
-  "setColor_sec12": "247, 200, 247",
-  "setWindow_Size": "1652, 990",
-  "setGPS_isRTK_KillAutoSteer": "False",
-  "setGPS_SimLongitude": "-111.15933325233",
-  "setAS_sideHillComp": "0",
-  "setColor_sec05": "200, 191, 86",
-  "setBrand_HBrand": "AGOpenGPS",
-  "setBrand_WDBrand": "AGOpenGPS",
-  "setDisplay_isTextureOn": "True",
-  "setMenu_isSkyOn": "True",
-  "setGPS_SimLatitude": "53.438258345356",
-  "setDisplay_colorSectionsDay": "27, 151, 160",
-  "setDisplay_isAutoDayNight": "False",
-  "setF_isSteerWorkSwitchEnabled": "True",
-  "setF_isWorkSwitchManualSections": "False",
-  "setIMU_fusionWeight": "0.06",
-  "setAS_countsPerDegree": "163",
-  "setWindow_Location": "1229, 233",
-  "setAS_uTurnSmoothing": "14",
-  "setColor_sec11": "213, 239, 190",
-  "setF_CurrentDir": "fgh ",
-  "setAS_Kp": "50",
-  "setIMU_rollFilter": "0.5",
-  "setWindow_Maximized": "False",
-  "setMenu_isLightbarOn": "True",
-  "setWindow_Minimized": "False",
-  "setGPS_headingFromWhichSource": "Fix",
-  "setMenu_isPureOn": "True",
-  "setF_isSteerWorkSwitchManualSections": "False",
-  "setAS_ackerman": "100",
-  "setSound_isHydLiftOn": "True",
-  "_rid": "YrUsAIDd3y06AAAAAAAAAA==",
-  "_self": "dbs/YrUsAA==/colls/YrUsAIDd3y0=/docs/YrUsAIDd3y06AAAAAAAAAA==/",
-  "_etag": "\"2f0099b2-0000-1100-0000-64a077740000\"",
-  "_attachments": "attachments/",
-  "_ts": 1688237940,
-  "Etag": null,
-  "ResourceId": "YrUsAIDd3y06AAAAAAAAAA==",
-  "Timestamp": null,
-  "Uri": "dbs/YrUsAA==/colls/YrUsAIDd3y0=/docs/YrUsAIDd3y06AAAAAAAAAA==/",
-  "Attachments": "attachments/"
-}`;
-
-      let d = JSON.parse(data);//creates an object from the retrieved text
-      console.log(d);
-      //include the object values in the form (to be reviewed the min and max values allowed)
-      document.querySelector("#was").value = +d.setAS_wasOffset;
-      document.querySelector("#cpd").value = +d.setAS_countsPerDegree;
-      document.querySelector("#ackermann").value = +d.setAS_ackerman;
-      document.querySelector("#pg").value = +d.setAS_Kp;
-      document.querySelector("#ml").value = +d.setAS_highSteerPWM;
-      document.querySelector("#mm").value = +d.setAS_minSteerPWM;
-      /*
-      //these fields are not in the database
-        document.querySelector("#msa").value = +d.setAS_countsPerDegree;
-        document.querySelector("#sd").value = +d.setAS_countsPerDegree;
-        document.querySelector("#sh").value = +d.setAS_countsPerDegree;
-        document.querySelector("#si").value = +d.setAS_countsPerDegree;
-        document.querySelector("#ppala").value = +d.setAS_countsPerDegree;
-        document.querySelector("#pphla").value = +d.setAS_countsPerDegree;
-        document.querySelector("#ppsg").value = +d.setAS_countsPerDegree;
-        document.querySelector("#ppi").value = +d.setAS_countsPerDegree;
-      */
-
-      document.querySelector("div#recordModal div.modal-header > p").innerHTML = Math.floor(Math.random() * 100);//set the id, dummy as the data can not be collected from api
-      const myModal = new bootstrap.Modal('#recordModal');
-      myModal.show();
-
     }
 
     (function () {
