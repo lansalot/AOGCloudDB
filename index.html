@@ -182,13 +182,22 @@
             <div class="tab-pane fade" id="wheel-tab-pane" role="tabpanel" aria-labelledby="wheel-tab" tabindex="0">
               <div class="d-flex justify-content-between">
                 <span class="text-center mx-5 flex-grow-1">
-                  <p class="fs-6 pt-3 m-0">WAS Zero</p>
-                  <input type="range" class="form-range" id="was" min="-25" max="25">
-                  <p class="fs-6 pt-3 m-0">Counts per Degree</p>
+
+                  <p class="fs-6 pt-3 m-0">WAS Zero
+                  <span class="value-label" id="was-value">50</span></p>
+                  <input type="range" class="form-range" id="was" min="-4096" max="4096">
+                  <!-- the min/max of above relates to CPD value, take that into effect!! -->
+
+                  <p class="fs-6 pt-3 m-0">Counts per Degree
+                  <span class="value-label" id="cpd-value">50</span></p>
                   <input type="range" class="form-range" id="cpd" min="1" max="255">
-                  <p class="fs-6 pt-3 m-0">Ackermann</p>
+
+                  <p class="fs-6 pt-3 m-0">Ackermann
+                  <span class="value-label" id="ackermann-value">50</span></p>
                   <input type="range" class="form-range" id="ackermann" min="1" max="200">
-                  <p class="fs-6 pt-3 m-0">Max Steer Angle</p>
+
+                  <p class="fs-6 pt-3 m-0">Max Steer Angle
+                  <span class="value-label" id="msa-value">50</span></p>
                   <input type="range" class="form-range" id="msa" min="10" max="80">
                 </span>
                 <span class="mt-4 mx-3">
@@ -200,12 +209,17 @@
               <div class="d-flex justify-content-between">
                 <span class="text-center mx-5 flex-grow-1">
                   <p class="fs-4 fw-bold">Motor or Hydraulic Gain</p>
-                  <p class="fs-6 pt-3 m-0">Proportional Gain</p>
-                  <input type="range" class="form-range" id="pg" min="0" max="200" onchange="updateLabel(this)">
-                  <span class="value-label" id="pg-value">50</span>
-                  <p class="fs-6 pt-3 m-0">Maximum Limit</p>
+
+                  <p class="fs-6 pt-3 m-0">Proportional Gain
+                  <span class="value-label" id="pg-value">50</span></p>
+                  <input type="range" class="form-range" id="pg" min="0" max="200">
+
+                  <p class="fs-6 pt-3 m-0">Maximum Limit
+                  <span class="value-label pt-6" id="ml-value">50</span></p>
                   <input type="range" class="form-range" id="ml" min="0" max="254">
-                  <p class="fs-6 pt-3 m-0">Minimum to move</p>
+
+                  <p class="fs-6 pt-3 m-0">Minimum to move
+                  <span class="value-label" id="mm-value">50</span></p>
                   <input type="range" class="form-range" id="mm" min="0" max="100">
                 </span>
                 <span class="mt-0 mx-3">
@@ -213,15 +227,22 @@
                 </span>
               </div>
             </div>
+
             <div class="tab-pane fade" id="stanley-tab-pane" role="tabpanel" aria-labelledby="stanley-tab" tabindex="0">
               <div class="d-flex justify-content-between">
                 <span class="text-center mx-5 flex-grow-1">
                   <p class="fs-4 fw-bold text-warning">Stanley Gains</p>
-                  <p class="fs-6 pt-4 m-0">Aggressiveness</p>
-                  <input type="range" class="form-range" id="sd" min="0.1" max="4">
-                  <p class="fs-6 pt-4 m-0">Overshoot Reduction</p>
-                  <input type="range" class="form-range" id="sh" min="0.1" max="4">
-                  <p class="fs-6 pt-4 m-0">Integral</p>
+
+                  <p class="fs-6 pt-4 m-0">Aggressiveness
+                  <span class="value-label" id="sd-value">50</span></p>
+                  <input type="range" class="form-range" id="sd" min="0.1" max="4" step="0.1">
+
+                  <p class="fs-6 pt-4 m-0">Overshoot Reduction
+                  <span class="value-label" id="sh-value">50</span></p>
+                  <input type="range" class="form-range" id="sh" min="0.1" max="4" step="0.1">
+
+                  <p class="fs-6 pt-4 m-0">Integral
+                  <span class="value-label" id="si-value">50</span></p>
                   <input type="range" class="form-range" id="si" min="0" max="100">
                 </span>
                 <span class="mt-3 mx-3">
@@ -229,17 +250,26 @@
                 </span>
               </div>
             </div>
+
             <div class="tab-pane fade" id="pp-tab-pane" role="tabpanel" aria-labelledby="pp-tab" tabindex="0">
               <div class="d-flex justify-content-between">
                 <span class="text-center mx-5 flex-grow-1">
                   <p class="fs-4 fw-bold text-info">Pure Pursuit</p>
-                  <p class="fs-6 pt-3 m-0">Acquire Look Ahead</p>
-                  <input type="range" class="form-range" id="ppala" min="1" max="5">
-                  <p class="fs-6 pt-3 m-0">Hold Look Ahead</p>
-                  <input type="range" class="form-range" id="pphla" min="1" max="5">
-                  <p class="fs-6 pt-3 m-0">Look Ahead Speed Gain</p>
-                  <input type="range" class="form-range" id="ppsg" min="0.5" max="3">
-                  <p class="fs-6 pt-3 m-0">Integral</p>
+
+                  <p class="fs-6 pt-3 m-0">Acquire Look Ahead
+                  <span class="value-label" id="ppala-value">50</span></p>
+                  <input type="range" class="form-range" id="ppala" min="1" max="5" step="0.1">
+
+                  <p class="fs-6 pt-3 m-0">Hold Look Ahead
+                  <span class="value-label" id="pphla-value">50</span></p>
+                  <input type="range" class="form-range" id="pphla" min="1" max="5" step="0.1">
+
+                  <p class="fs-6 pt-3 m-0">Look Ahead Speed Gain
+                  <span class="value-label" id="ppsg-value">50</span></p>
+                  <input type="range" class="form-range" id="ppsg" min="0.5" max="3" step="0.1">
+
+                  <p class="fs-6 pt-3 m-0">Integral
+                  <span class="value-label" id="ppi-value">50</span></p>
                   <input type="range" class="form-range" id="ppi" min="0" max="100">
                 </span>
                 <span class="mt-3 mx-3">
@@ -505,16 +535,6 @@
 
     }
 
-    function updateLabel(element) {
-      var value = $(element).val();
-      var label = $(element).siblings('.value-label');
-      label.text(value);
-    }
-
-    $('input[type="range"]').on('change', function () {
-      updateLabel(this);
-    });
-
     function showRecord(id) {
       let url = "https://aogdb.azurewebsites.net/api/getDetail?uniqueID=4"; // + id
       url = "http://localhost:7071/api/getDetail";
@@ -524,24 +544,24 @@
       fetch(url).then(r => r.json())
         .then(data => {
           console.log(data);
-          console.log("ANDREW");
 
           // these fields need scaled appropriately, and LABELLED
           // Steer
-          document.querySelector("#was").value = + 10; //data.setAS_wasOffset;
-          document.querySelector("#cpd").value = + 20; //data.setAS_countsPerDegree;
+          document.querySelector("#was").value = +data.setAS_wasOffset;
+          document.querySelector("#cpd").value = +data.setAS_countsPerDegree;
           document.querySelector("#ackermann").value = + data.setAS_ackerman;
 
           // PWM
           document.querySelector("#pg").value = + data.setAS_Kp;
           document.querySelector("#ml").value = + data.setAS_highSteerPWM;
           document.querySelector("#mm").value = + data.setAS_minSteerPWM;
-
           document.querySelector("#msa").value = + data.setVehicle_maxSteer;
+
           // Stanley
           document.querySelector("#sd").value = + data.stanleyDistanceErrorGain;
           document.querySelector("#sh").value = + data.stanleyHeadingErrorGain;
           document.querySelector("#si").value = + data.stanleyIntegralGainAB;
+
           // Pure Pursuit
           document.querySelector("#ppala").value = + data.setVehicle_goalPointLookAhead;
           document.querySelector("#pphla").value = + data.setVehicle_toolLookAheadOn;
@@ -550,6 +570,7 @@
 
           document.querySelector("#iPassword").dataset.key = + "NOT TELLING";
 
+          updateAllSliders();
 
           //show modal
           const myModal = new bootstrap.Modal('#recordModal');
@@ -804,8 +825,28 @@
         }
       }
     })();
-  </script>
 
+    function updateAllSliders() {
+      var sliders = document.querySelectorAll('input[type="range"]');
+      sliders.forEach(function (sl) {
+        var label = document.querySelector("#" + sl.id + "-value");
+        label.textContent = "(" + sl.value + ")";
+      })
+
+    }
+
+    var sliders = document.querySelectorAll('input[type="range"]');
+    sliders.forEach(function (sl) {
+      if (typeof sl != "undefined") {
+        sl.addEventListener('change', function () {
+          //var sl = this.event.target;
+          var label = document.querySelector("#" + this.id + "-value");
+          label.textContent = "(" + sl.value + ")";
+        });
+      }
+    });
+
+  </script>
 </body>
 
 </html>
