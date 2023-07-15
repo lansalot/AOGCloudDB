@@ -24,6 +24,10 @@
       flex: 0 0 auto;
     }
 
+    form>div.input-group>select {
+      max-width: 300px;
+    }
+
     form>div.input-group>input.form-control {
       border: 0 !important;
       flex: 0 0 auto;
@@ -54,68 +58,27 @@
       </div>
       <div class="input-group">
         <span class="input-group-text">Brand:</span>
-        <select class="form-select" id="iBrandFilter" width="200">
+        <select class="form-select" id="iBrandFilter" max-width="200">
           <option selected>Choose...</option>
         </select>
         <span class="input-group-text">V. Model:</span>
         <input type="text" aria-label="Telegram" class="form-control" placeholder="ie. 6S.155..." id="sModel">
       </div>
-      <div class="input-group">
+
+      <div class="input-group" id="PCBFilter">
         <span class="input-group-text">WAS. type:</span>
         <input type="text" aria-label="was" class="form-control" placeholder="ie. RHQ0013..." id="sWas">
 
         <span class="input-group-text bg-info">PCB type:</span>
-        <input type="checkbox" class="btn-check" id="btn-check-sPCB" autocomplete="off">
-        <label class="btn btn-outline-info" for="btn-check-sPCB">AIO 2.4</label>
 
-        <input type="checkbox" class="btn-check" id="btn-check-2-sPCB" autocomplete="off">
-        <label class="btn btn-outline-info" for="btn-check-2-sPCB">PCB 2</label>
-
-        <input type="checkbox" class="btn-check" id="btn-check-3-sPCB" autocomplete="off">
-        <label class="btn btn-outline-info" for="btn-check-3-sPCB">PCB 4.1</label>
-
-        <input type="checkbox" class="btn-check" id="btn-check-4-sPCB" autocomplete="off">
-        <label class="btn btn-outline-info" for="btn-check-4-sPCB">Kaupoi</label>
-
-        <input type="checkbox" class="btn-check" id="btn-check-99-sPCB" autocomplete="off">
-        <label class="btn btn-outline-info" for="btn-check-99-sPCB">Autosteer.cc</label>
-
-        <input type="checkbox" class="btn-check" id="btn-check-5-sPCB" autocomplete="off">
-        <label class="btn btn-outline-info" for="btn-check-5-sPCB">Ace</label>
-
-        <input type="checkbox" class="btn-check" id="btn-check-6-sPCB" autocomplete="off">
-        <label class="btn btn-outline-info" for="btn-check-6-sPCB">CANBUS</label>
-
-        <input type="checkbox" class="btn-check" id="btn-check-7-sPCB" autocomplete="off">
-        <label class="btn btn-outline-info" for="btn-check-7-sPCB">Other</label>
       </div>
 
 
       <div class="input-group mt-2">
-        <span class="input-group-text bg-secondary">Driver:</span>
-        <input type="checkbox" class="btn-check" id="btn-check-sDriver" autocomplete="off">
-        <label class="btn btn-outline-secondary" for="btn-check-sDriver">Electric</label>
-
-        <input type="checkbox" class="btn-check" id="btn-check-2-sDriver" autocomplete="off">
-        <label class="btn btn-outline-secondary" for="btn-check-2-sDriver">Hydraulic</label>
-
-        <input type="checkbox" class="btn-check" id="btn-check-3-sDriver" autocomplete="off">
-        <label class="btn btn-outline-secondary" for="btn-check-3-sDriver">CANBUS</label>
-
-        <span class="input-group-text bg-primary">Controller:</span>
-        <input type="checkbox" class="btn-check" id="btn-check-sController" autocomplete="off">
-        <label class="btn btn-outline-primary" for="btn-check-sController">Cytron 12v</label>
-
-        <input type="checkbox" class="btn-check" id="btn-check-2-sController" autocomplete="off">
-        <label class="btn btn-outline-primary" for="btn-check-2-sController">Cytron 24v</label>
-
-        <input type="checkbox" class="btn-check" id="btn-check-3-sController" autocomplete="off">
-        <label class="btn btn-outline-primary" for="btn-check-3-sController">Cytron hydraulic</label>
-
-        <input type="checkbox" class="btn-check" id="btn-check-4-sController" autocomplete="off">
-        <label class="btn btn-outline-primary" for="btn-check-4-sController">CANBUS</label>
-
+        <span class="input-group-text bg-secondary" id="DriverFilter">Driver:</span>
+        <span class="input-group-text bg-primary" id="ControllerFilter">Controller:</span>
       </div>
+
       <button type="button" class="btn btn-primary my-4" id="btn-search">Search<span class="ms-4"><svg width="20"
             height="20" class="DocSearch-Search-Icon" viewBox="0 0 20 20">
             <path
@@ -314,7 +277,7 @@
                   <label for="iBrand" class="col-sm-2 col-form-label">Brand</label>
                   <div class="col-sm-10">
                     <select class="form-select" id="iBrand">
-                    <option selected>Choose...</option>
+                      <option selected>Choose...</option>
                     </select>
                   </div>
                 </div>
@@ -445,70 +408,37 @@
     function search() {
       // from the form values create the json/url to request the data from the db
       let f = document.querySelector("#search-form");
-      let url = urlstub + "getDetail?";
-      if (f.sDiscourse.value) url += "discourse=" + f.sDiscourse.value;
-      if (f.sTelegram.value) url += "telegram=" + f.sTelegram.value;
-      if (f.iBrandFilter.value) url += "brand=" + f.iBrandFilter.value;
-      if (f.sModel.value) url += "model=" + f.sModel.value;
+      let url = urlstub + "getSummary?";
+      if (f.sDiscourse.value) url += "discourse=" + f.sDiscourse.value + "&";
+      if (f.sTelegram.value) url += "telegram=" + f.sTelegram.value + "&";
+      if (f.iBrandFilter.selectedIndex > 0) url += "brand=" + f.iBrandFilter.value + "&";
+      if (f.sModel.value) url += "model=" + f.sModel.value + "&";
       if (f.sWas.value) url += "was=" + f.sWas.value;
 
       // request data from the api with fetch, like:
-      /* CORS issue to solve
-        fetch(url).then(r => r.json()) //converts the txt in json
-          .then(d =>{ //include data in the table
-            document.querySelector("table.data-table").classList.remove("d-none");
-            document.querySelector("#data-table").innerHTML +=`
-          <tr data-id="{$d.id}">
-            <td>{$d.discourse}</td>
-            <td>{$d.telegram}</td>
-            <td>{$d.brand}</td>
-            <td>{$d.model}</td>
-            <td>{$d.was}</td>
-            <td>{$d.pcb}</td>
-            <td>{$d.driver}</td>
-            <td>{$d.controller}</td>
+      //CORS issue to solve
+      fetch(url).then(r => r.json()) //converts the txt in json
+        .then(d => { //include data in the table
+          document.querySelector("table.data-table").classList.remove("d-none");
+          document.querySelector("#data-table").innerHTML += `
+          <tr data-id="${d.uniqueID}">
+            <td>${d.DiscourseID}</td>
+            <td>${d.TelegramID}</td>
+            <td>${d.setBrand_TBrand}</td>
+            <td>${d.MachineModel}</td>
+            <td>${d.WASType}</td>
+            <td>${d.PCB}</td>
+            <td>${d.Driver}</td>
+            <td>${d.Controller}</td>
           </tr>`;
-          }).catch(console.error);
-      */
+        }).catch(console.error);
+
       //display the data table
       document.querySelector("table.data-table").classList.remove("d-none");
 
-      //example to simulate some dummy data
       let t = document.querySelector("#data-table");
       t.innerHTML = "";// Reset the table
 
-      t.innerHTML += `<tr data-id="1">
-			<td>Mark</td>
-			<td>mar</td>
-			<td>MF</td>
-			<td>6S.155</td>
-			<td>RHQ0013</td>
-			<td>AIO 2.4</td>
-			<td>Electric</td>
-			<td>Cytron 12v</td>
-		</tr>`;
-      t.innerHTML += `
-		<tr data-id="2">
-			<td>Jake</td>
-			<td>jans</td>
-			<td>Fendt</td>
-			<td>718</td>
-			<td>RHQ0013</td>
-			<td>PCB V2</td>
-			<td>Electric</td>
-			<td>Cytron 12v</td>
-		</tr>`;
-      t.innerHTML += `
-		<tr data-id="3">
-			<td>Daniel</td>
-			<td>Dan</td>
-			<td>NH</td>
-			<td>Leopard 85</td>
-			<td>RHQ0013</td>
-			<td>PCB V2</td>
-			<td>Electric</td>
-			<td>Cytron 12v</td>
-		</tr>`;
 
       //add capabilities to retrieve and show details from a record
       document.querySelectorAll("#data-table > tr").forEach(el => {
@@ -528,7 +458,7 @@
       /* CORS issue to solve */
       fetch(url).then(r => r.json())
         .then(data => {
-          console.log(data);
+          //console.log(data);
 
           document.querySelector("#iDiscourse").value = data.DiscourseID;
           document.querySelector("#iTelegram").value = data.TelegramID;
@@ -828,65 +758,115 @@
 
     }
 
-    //function PopulateDrivers() {
-      document.addEventListener('DOMContentLoaded', function () {
-        var BrandElement = document.getElementById('iBrand');
-        var BrandFilterElement = document.getElementById('iBrandFilter');
-        var PCBElement = document.getElementById('ipcb');
-        var driverElement = document.getElementById('iDriver');
-        var controllerElement = document.getElementById('iController');
+    document.addEventListener('DOMContentLoaded', function () {
+      var BrandElement = document.getElementById('iBrand');
+      var BrandFilterElement = document.getElementById('iBrandFilter');
+      var PCBElement = document.getElementById('ipcb');
+      var PCBFilterElement = document.getElementById('PCBFilter');
+      var driverElement = document.getElementById('iDriver');
+      var driverFilterElement = document.getElementById('DriverFilter');
+      var controllerElement = document.getElementById('iController');
+      var controllerFilterElement = document.getElementById('ControllerFilter');
 
-        // Make an AJAX request to the REST API
-        fetch(urlstub + "getStaticInfo")
-          .then(function (response) {
-            if (response.ok) {
-              return response.json();
-            } else {
-              throw new Error('Error occurred while fetching options from the API.');
-            }
-          })
-          .then(function (data) {
-            // Process the response and populate the options
-            data.Manufacturer.forEach(function (option) {
-              var optionElement = document.createElement('option');
-              optionElement.value = option;
-              optionElement.textContent = option;
-              BrandElement.appendChild(optionElement);
+      // Make an AJAX request to the REST API and pull in the dynamic content
+      fetch(urlstub + "getStaticInfo")
+        .then(function (response) {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error('Error occurred while fetching options from the API.');
+          }
+        })
+        .then(function (data) {
+          var counter = 1;
+          // Process the response and populate the options
+          data.Manufacturer.forEach(function (option) {
+            var optionElement = document.createElement('option');
+            optionElement.value = option;
+            optionElement.textContent = option;
+            BrandElement.appendChild(optionElement);
 
-              // and again for the filter dropdown
-              var optionElement = document.createElement('option');
-              optionElement.value = option;
-              optionElement.textContent = option;
-              BrandFilterElement.appendChild(optionElement);
+            // and again for the filter dropdown
+            var optionElement = document.createElement('option');
+            optionElement.value = option;
+            optionElement.textContent = option;
+            BrandFilterElement.appendChild(optionElement);
 
-            });
-            data.PCBType.forEach(function (option) {
-              var optionElement = document.createElement('option');
-              optionElement.value = option;
-              optionElement.textContent = option;
-
-              PCBElement.appendChild(optionElement);
-            });
-            data.Driver.forEach(function (option) {
-              var optionElement = document.createElement('option');
-              optionElement.value = option;
-              optionElement.textContent = option;
-
-              driverElement.appendChild(optionElement);
-            });
-            data.Controller.forEach(function (option) {
-              var optionElement = document.createElement('option');
-              optionElement.value = option;
-              optionElement.textContent = option;
-
-              controllerElement.appendChild(optionElement);
-            });
-          })
-          .catch(function (error) {
-            console.log(error);
           });
-      });
-    //}
+          counter = 1;
+          data.PCBType.forEach(function (option) {
+            var optionElement = document.createElement('option');
+            optionElement.value = option;
+            optionElement.textContent = option;
+
+            PCBElement.appendChild(optionElement);
+
+            var checkboxElement = document.createElement('input');
+            checkboxElement.type = 'checkbox';
+            checkboxElement.className = 'btn-check';
+            checkboxElement.id = 'btn-check-' + option + counter + '-sPCB';
+            checkboxElement.autocomplete = 'off';
+            checkboxElement.value = option;
+            PCBFilterElement.appendChild(checkboxElement);
+
+            var labelElement = document.createElement('label');
+            labelElement.className = 'btn btn-outline-info';
+            labelElement.htmlFor = 'btn-check-' + option + counter + '-sPCB';
+            labelElement.textContent = option;
+            PCBFilterElement.appendChild(labelElement);
+            counter++;
+          });
+          counter = 1;
+          data.Driver.forEach(function (option) {
+            var optionElement = document.createElement('option');
+            optionElement.value = option;
+            optionElement.textContent = option;
+
+            driverElement.appendChild(optionElement);
+
+            var checkboxElement = document.createElement('input');
+            checkboxElement.type = 'checkbox';
+            checkboxElement.className = 'btn-check';
+            checkboxElement.id = 'btn-check-' + option + counter + '-sDriver';
+            checkboxElement.autocomplete = 'off';
+            checkboxElement.value = option;
+            driverFilterElement.appendChild(checkboxElement);
+
+            var labelElement = document.createElement('label');
+            labelElement.className = 'btn btn-outline-info';
+            labelElement.htmlFor = 'btn-check-' + option + counter + '-sDriver';
+            labelElement.textContent = option;
+            driverFilterElement.appendChild(labelElement);
+            counter++;
+          });
+          counter = 1;
+          data.Controller.forEach(function (option) {
+            var optionElement = document.createElement('option');
+            optionElement.value = option;
+            optionElement.textContent = option;
+
+            controllerElement.appendChild(optionElement);
+
+            var checkboxElement = document.createElement('input');
+            checkboxElement.type = 'checkbox';
+            checkboxElement.className = 'btn-check';
+            checkboxElement.id = 'btn-check-' + option + counter + '-sController';
+            checkboxElement.autocomplete = 'off';
+            checkboxElement.value = option;
+            controllerFilterElement.appendChild(checkboxElement);
+
+            var labelElement = document.createElement('label');
+            labelElement.className = 'btn btn-outline-info';
+            labelElement.htmlFor = 'btn-check-' + option + counter + '-sController';
+            labelElement.textContent = option;
+            controllerFilterElement.appendChild(labelElement);
+            counter++;
+          });
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    });
 
     var sliders = document.querySelectorAll('input[type="range"]');
     sliders.forEach(function (sl) {
@@ -899,7 +879,6 @@
       }
     });
 
-    //PopulateDrivers();
   </script>
 </body>
 
