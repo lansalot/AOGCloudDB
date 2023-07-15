@@ -1,419 +1,468 @@
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
-	<head>
-	<meta name="author" content="Miguel Cebrian">
-	<title>Configurations</title>
-	<link href="./assets/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="icon" type="image/png" href="./assets/img/icon.png">
-	<style>
-		.aog-bg{--bs-bg-opacity: 1; background-color: rgba(var(--bs-secondary-bg-rgb),var(--bs-bg-opacity))!important;}
-		.aog-bg-tab.active{--bs-bg-opacity: 1; background-color: rgba(var(--bs-secondary-bg-rgb),var(--bs-bg-opacity))!important;}
-		span.input-group-text{font-weight: bolder!important; border: 0!important;background-color: var(--bs-white);flex: 0 0 auto;}
-		form > div.input-group > input.form-control{border: 0!important; flex: 0 0 auto;width: 33.33333333%;}
-	</style>
-    </head>
-    <body>
-	
-      
 
-<header class="navbar sticky-top bg-primary text-white px-4">
+<head>
+  <meta name="author" content="Miguel Cebrian">
+  <title>Configurations</title>
+  <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="./assets/img/icon.png">
+  <style>
+    .aog-bg {
+      --bs-bg-opacity: 1;
+      background-color: rgba(var(--bs-secondary-bg-rgb), var(--bs-bg-opacity)) !important;
+    }
+
+    .aog-bg-tab.active {
+      --bs-bg-opacity: 1;
+      background-color: rgba(var(--bs-secondary-bg-rgb), var(--bs-bg-opacity)) !important;
+    }
+
+    span.input-group-text {
+      font-weight: bolder !important;
+      border: 0 !important;
+      background-color: var(--bs-white);
+      flex: 0 0 auto;
+    }
+
+    form>div.input-group>input.form-control {
+      border: 0 !important;
+      flex: 0 0 auto;
+      width: 33.33333333%;
+    }
+  </style>
+</head>
+
+<body>
+
+
+
+  <header class="navbar sticky-top bg-primary text-white px-4">
     <a class="navbar-brand p-0 me-0 me-lg-2" href="./index.html" aria-label="Bootstrap">
-		<img height="128px" src="./assets/img/logo.png">
+      <img height="128px" src="./assets/img/logo.png">
     </a>
-    <p  class="fw-bolder fs-1">AgOpenGPS </p>
-    <p  class="fw-light ms-4 flex-grow-1">Configurations</p>
-</header>
+    <p class="fw-bolder fs-1">AgOpenGPS </p>
+    <p class="fw-light ms-4 flex-grow-1">Configurations</p>
+  </header>
 
-<main class="container mt-4">
-<form id="search-form">
-  <div class="input-group">
-    <span class="input-group-text">Discourse:</span>
-    <input type="text" aria-label="Discourse" class="form-control" placeholder="Discourse Name" id="sDiscourse">
-    <span class="input-group-text">Telegram:</span>
-    <input type="text" aria-label="Telegram" class="form-control" placeholder="Telegram Name" id="sTelegram">
-  </div>
-  <div class="input-group">
-    <span class="input-group-text">Ve. Brand:</span>
-    <input type="text" aria-label="Discourse" class="form-control" placeholder="ie. Fendt, MF, NH, JD..." id="sBrand">
-    <span class="input-group-text">V. Model:</span>
-    <input type="text" aria-label="Telegram" class="form-control" placeholder="ie. 6S.155..." id="sModel">
-  </div>
-  <div class="input-group">
-    <span class="input-group-text">WAS. type:</span>
-    <input type="text" aria-label="was" class="form-control" placeholder="ie. RHQ0013..." id="sWas">
-
-    <span class="input-group-text bg-info">PCB type:</span>
-    <input type="checkbox" class="btn-check" id="btn-check-sPCB" autocomplete="off">
-    <label class="btn btn-outline-info" for="btn-check-sPCB">AIO 2.4</label>
-
-    <input type="checkbox" class="btn-check" id="btn-check-2-sPCB" autocomplete="off">
-    <label class="btn btn-outline-info" for="btn-check-2-sPCB">PCB 2</label>
-
-    <input type="checkbox" class="btn-check" id="btn-check-3-sPCB" autocomplete="off">
-    <label class="btn btn-outline-info" for="btn-check-3-sPCB">PCB 4.1</label>
-
-    <input type="checkbox" class="btn-check" id="btn-check-4-sPCB" autocomplete="off">
-    <label class="btn btn-outline-info" for="btn-check-4-sPCB">Kaupoi</label>
-
-    <input type="checkbox" class="btn-check" id="btn-check-5-sPCB" autocomplete="off">
-    <label class="btn btn-outline-info" for="btn-check-5-sPCB">Autosteer.cc</label>
-
-    <input type="checkbox" class="btn-check" id="btn-check-5-sPCB" autocomplete="off">
-    <label class="btn btn-outline-info" for="btn-check-5-sPCB">Ace</label>
-
-    <input type="checkbox" class="btn-check" id="btn-check-6-sPCB" autocomplete="off">
-    <label class="btn btn-outline-info" for="btn-check-6-sPCB">CANBUS</label>
-
-    <input type="checkbox" class="btn-check" id="btn-check-7-sPCB" autocomplete="off">
-    <label class="btn btn-outline-info" for="btn-check-7-sPCB">Other</label>
-  </div>
-  <div class="input-group mt-2">
-    <span class="input-group-text bg-secondary">Driver:</span>
-    <input type="checkbox" class="btn-check" id="btn-check-sDriver" autocomplete="off">
-    <label class="btn btn-outline-secondary" for="btn-check-sDriver">Electric</label>
-
-    <input type="checkbox" class="btn-check" id="btn-check-2-sDriver" autocomplete="off">
-    <label class="btn btn-outline-secondary" for="btn-check-2-sDriver">Hydraulic</label>
-
-    <input type="checkbox" class="btn-check" id="btn-check-3-sDriver" autocomplete="off">
-    <label class="btn btn-outline-secondary" for="btn-check-3-sDriver">CAN-BUS</label>
-
-    <span class="input-group-text bg-primary">Controller:</span>
-    <input type="checkbox" class="btn-check" id="btn-check-sController" autocomplete="off">
-    <label class="btn btn-outline-primary" for="btn-check-sController">Cytron 12v</label>
-
-    <input type="checkbox" class="btn-check" id="btn-check-2-sController" autocomplete="off">
-    <label class="btn btn-outline-primary" for="btn-check-2-sController">Cytron 24v</label>
-
-    <input type="checkbox" class="btn-check" id="btn-check-3-sController" autocomplete="off">
-    <label class="btn btn-outline-primary" for="btn-check-3-sController">Cytron hydraulic</label>
-
-    <input type="checkbox" class="btn-check" id="btn-check-4-sController" autocomplete="off">
-    <label class="btn btn-outline-primary" for="btn-check-4-sController">CAN-BUS</label>
-
-  </div>
-  <button type="button" class="btn btn-primary my-4" id="btn-search">Search<span class="ms-4"><svg width="20" height="20" class="DocSearch-Search-Icon" viewBox="0 0 20 20"><path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></button>
-</form>
-
-<table class="table table-striped table-hover data-table d-none">
-	<thead class="table-dark">
-		<tr>
-			<th scope="col">Discourse</th>
-			<th scope="col">Telegram</th>
-			<th scope="col">Brand</th>
-			<th scope="col">Model</th>
-			<th scope="col">WAS</th>
-			<th scope="col">PCB</th>
-			<th scope="col">Driver</th>
-			<th scope="col">Controller</th>
-		</tr>
-	</thead>
-	<tbody id="data-table"></tbody>
-</table>
-
-
-</main>
-
-<!-- Modal -->
-<div class="modal fade" id="recordModal" tabindex="-1" aria-labelledby="RecordModal" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5">Configuration Record </h1><p class="fs-6 ms-4">a34124f</p>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  <main class="container mt-4">
+    <form id="search-form">
+      <div class="input-group">
+        <span class="input-group-text">Discourse:</span>
+        <input type="text" aria-label="Discourse" class="form-control" placeholder="Discourse Name" id="sDiscourse">
+        <span class="input-group-text">Telegram:</span>
+        <input type="text" aria-label="Telegram" class="form-control" placeholder="Telegram Name" id="sTelegram">
       </div>
-      <div class="modal-body">
-      <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item" role="presentation">
-          <button class="nav-link aog-bg-tab  border-bottom-0" id="wheel-tab" data-bs-toggle="tab" data-bs-target="#wheel-tab-pane" type="button" role="tab" aria-controls="whell-tab-pane" aria-selected="true"><img height="48px" src="./assets/img/wheel.png"></button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link aog-bg-tab border-bottom-0 pb-2" id="pot-tab" data-bs-toggle="tab" data-bs-target="#pot-tab-pane" type="button" role="tab" aria-controls="pot-tab-pane" aria-selected="false"><img height="48px" src="./assets/img/pot.png"></button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link aog-bg-tab border-bottom-0" id="stanley-tab" data-bs-toggle="tab" data-bs-target="#stanley-tab-pane" type="button" role="tab" aria-controls="stanley-tab-pane" aria-selected="false"><img height="48px" src="./assets/img/stanley.png"></button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link aog-bg-tab border-bottom-0" id="pp-tab" data-bs-toggle="tab" data-bs-target="#pp-tab-pane" type="button" role="tab" aria-controls="pp-tab-pane" aria-selected="false"><img height="48px" src="./assets/img/pp.png"></button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link active aog-bg-tab border-bottom-0" id="ad-tab" data-bs-toggle="tab" data-bs-target="#ad-tab-pane" type="button" role="tab" aria-controls="ad-tab-pane" aria-selected="false"><img height="48px" src="./assets/img/fileMenu.png"></button>
-        </li>
-      </ul>
-      <div class="tab-content aog-bg" id="myTabContent">
-        <div class="tab-pane fade" id="wheel-tab-pane" role="tabpanel" aria-labelledby="wheel-tab" tabindex="0">
-        <div class="d-flex justify-content-between">
-			<span class="text-center mx-5 flex-grow-1">
-				<p class="fs-6 pt-3 m-0">WAS Zero</p>
-				<input type="range" class="form-range" id="was">
-				<p class="fs-6 pt-3 m-0">Counts per Degree</p>
-				<input type="range" class="form-range" id="cpd">
-				<p class="fs-6 pt-3 m-0">Ackermann</p>
-				<input type="range" class="form-range" id="ackermann">
-				<p class="fs-6 pt-3 m-0">Max Steer Angle</p>
-				<input type="range" class="form-range" id="msa">
-			</span>
-			<span class="mt-4 mx-3">
-				<img src="./assets/img/wheelData.png">
-			</span>
-		</div>
-		</div>
-        <div class="tab-pane fade" id="pot-tab-pane" role="tabpanel" aria-labelledby="pot-tab" tabindex="0">
-        <div class="d-flex justify-content-between">
-			<span class="text-center mx-5 flex-grow-1">
-				<p class="fs-4 fw-bold">Motor or Hydraulic Gain</p>
-				<p class="fs-6 pt-3 m-0">Proportional Gain</p>
-				<input type="range" class="form-range" id="pg">
-				<p class="fs-6 pt-3 m-0">Maximum Limit</p>
-				<input type="range" class="form-range" id="ml">
-				<p class="fs-6 pt-3 m-0">Minimum to move</p>
-				<input type="range" class="form-range" id="mm">
-			</span>
-			<span class="mt-0 mx-3">
-				<img src="./assets/img/potData.png">
-			</span>
-		</div>
-		</div>
-        <div class="tab-pane fade" id="stanley-tab-pane" role="tabpanel" aria-labelledby="stanley-tab" tabindex="0">
-        <div class="d-flex justify-content-between">
-			<span class="text-center mx-5 flex-grow-1">
-				<p class="fs-4 fw-bold text-warning">Stanley Gains</p>
-				<p class="fs-6 pt-4 m-0">Distance</p>
-				<input type="range" class="form-range" id="sd">
-				<p class="fs-6 pt-4 m-0">Heading</p>
-				<input type="range" class="form-range" id="sh">
-				<p class="fs-6 pt-4 m-0">Integral</p>
-				<input type="range" class="form-range" id="si">
-			</span>
-			<span class="mt-3 mx-3">
-				<img src="./assets/img/stanleyData.png">
-			</span>
-		</div>
-		</div>
-        <div class="tab-pane fade" id="pp-tab-pane" role="tabpanel" aria-labelledby="pp-tab" tabindex="0">
-        <div class="d-flex justify-content-between">
-			<span class="text-center mx-5 flex-grow-1">
-				<p class="fs-4 fw-bold text-info">Pure Pursuit</p>
-				<p class="fs-6 pt-3 m-0">Acquire Look Ahead</p>
-				<input type="range" class="form-range" id="ppala">
-				<p class="fs-6 pt-3 m-0">Hold Look Ahead</p>
-				<input type="range" class="form-range" id="pphla">
-				<p class="fs-6 pt-3 m-0">Look Ahead Speed Gain</p>
-				<input type="range" class="form-range" id="ppsg">
-				<p class="fs-6 pt-3 m-0">Integral</p>
-				<input type="range" class="form-range" id="ppi">
-			</span>
-			<span class="mt-3 mx-3">
-				<img src="./assets/img/ppData.png">
-			</span>
-		</div>
-		</div>
-        <div class="tab-pane fade show active" id="ad-tab-pane" role="tabpanel" aria-labelledby="ad-tab" tabindex="0">
-<form class="p-4" id="record-form">
-  <div class="row mb-3">
-    <label for="iDiscourse" class="col-sm-2 col-form-label">Discourse</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" placeholder="Dircourse User Name" id="iDiscourse">
-    </div>
-  </div>
-  <div class="row mb-3">
-    <label for="iTelegram" class="col-sm-2 col-form-label">Telegram</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" placeholder="Telegram User Name" id="iTelegram">
-    </div>
-  </div>
-  <div class="row mb-3">
-    <label for="iBrand" class="col-sm-2 col-form-label">V. Brand</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" placeholder="ie. Fendt, MF, NH, JD..." id="iBrand">
-    </div>
-  </div>
-  <div class="row mb-3">
-    <label for="iModel" class="col-sm-2 col-form-label">V. Model</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" placeholder="ie. 6S.155..." id="iModel">
-    </div>
-  </div>
-  <div class="row mb-3">
-    <label for="iWas" class="col-sm-2 col-form-label">WAS type</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" placeholder="ie. RHQ0013..." id="iWas">
-    </div>
-  </div>
-  <div class="input-group mb-3">
-  <label class="input-group-text" for="ipcb">PCB type</label>
-  <select class="form-select" id="ipcb">
-    <option selected>Choose...</option>
-    <option value="1">AIO 2.4</option>
-    <option value="2">PCB 2</option>
-    <option value="3">PCB 4.1</option>
-    <option value="4">Kaupoi</option>
-    <option value="5">Autosteer.cc</option>
-    <option value="6">ACE</option>
-    <option value="7">CANBUS</option>
-    <option value="8">Other</option>
-  </select>
-  </div>
-  <div class="input-group mb-3">
-  <label class="input-group-text" for="iDriver">Driver</label>
-  <select class="form-select" id="iDriver">
-    <option selected>Electric</option>
-    <option value="1">Hydraulic</option>
-    <option value="2">CAN-BUS</option>
-  </select>
-  </div>
-  <div class="input-group mb-3">
-  <label class="input-group-text" for="iController">Drive controller</label>
-  <select class="form-select" id="iController">
-    <option selected>Choose...</option>
-    <option value="1">Cytron 12v</option>
-    <option value="2">Cytron 24v</option>
-    <option value="3">Cytron hydraulic</option>
-    <option value="4">CAN-BUS</option>
-  </select>
-  </div>
-  <div class="row mb-3">
-    <label for="iComm" class="col-sm-2 col-form-label">Comments</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" placeholder="ie. Any short comment or piece of advise..." id="iComm">
-    </div>
-  </div>
-  <fieldset class="row mb-3">
-    <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
-    <div class="col-sm-10">
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-        <label class="form-check-label" for="gridRadios1">
-          First radio
-        </label>
+      <div class="input-group">
+        <span class="input-group-text">Ve. Brand:</span>
+        <input type="text" aria-label="Discourse" class="form-control" placeholder="ie. Fendt, MF, NH, JD..."
+          id="sBrand">
+        <span class="input-group-text">V. Model:</span>
+        <input type="text" aria-label="Telegram" class="form-control" placeholder="ie. 6S.155..." id="sModel">
       </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-        <label class="form-check-label" for="gridRadios2">
-          Second radio
-        </label>
+      <div class="input-group">
+        <span class="input-group-text">WAS. type:</span>
+        <input type="text" aria-label="was" class="form-control" placeholder="ie. RHQ0013..." id="sWas">
+
+        <span class="input-group-text bg-info">PCB type:</span>
+        <input type="checkbox" class="btn-check" id="btn-check-sPCB" autocomplete="off">
+        <label class="btn btn-outline-info" for="btn-check-sPCB">AIO 2.4</label>
+
+        <input type="checkbox" class="btn-check" id="btn-check-2-sPCB" autocomplete="off">
+        <label class="btn btn-outline-info" for="btn-check-2-sPCB">PCB 2</label>
+
+        <input type="checkbox" class="btn-check" id="btn-check-3-sPCB" autocomplete="off">
+        <label class="btn btn-outline-info" for="btn-check-3-sPCB">PCB 4.1</label>
+
+        <input type="checkbox" class="btn-check" id="btn-check-4-sPCB" autocomplete="off">
+        <label class="btn btn-outline-info" for="btn-check-4-sPCB">Kaupoi</label>
+
+        <input type="checkbox" class="btn-check" id="btn-check-99-sPCB" autocomplete="off">
+        <label class="btn btn-outline-info" for="btn-check-99-sPCB">Autosteer.cc</label>
+
+        <input type="checkbox" class="btn-check" id="btn-check-5-sPCB" autocomplete="off">
+        <label class="btn btn-outline-info" for="btn-check-5-sPCB">Ace</label>
+
+        <input type="checkbox" class="btn-check" id="btn-check-6-sPCB" autocomplete="off">
+        <label class="btn btn-outline-info" for="btn-check-6-sPCB">CANBUS</label>
+
+        <input type="checkbox" class="btn-check" id="btn-check-7-sPCB" autocomplete="off">
+        <label class="btn btn-outline-info" for="btn-check-7-sPCB">Other</label>
       </div>
-    </div>
-  </fieldset>
-  <div class="row mb-3">
-    <div class="col-sm-10 offset-sm-2">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="gridCheck1">
-        <label class="form-check-label" for="gridCheck1">
-          Example checkbox
-        </label>
+      <div class="input-group mt-2">
+        <span class="input-group-text bg-secondary">Driver:</span>
+        <input type="checkbox" class="btn-check" id="btn-check-sDriver" autocomplete="off">
+        <label class="btn btn-outline-secondary" for="btn-check-sDriver">Electric</label>
+
+        <input type="checkbox" class="btn-check" id="btn-check-2-sDriver" autocomplete="off">
+        <label class="btn btn-outline-secondary" for="btn-check-2-sDriver">Hydraulic</label>
+
+        <input type="checkbox" class="btn-check" id="btn-check-3-sDriver" autocomplete="off">
+        <label class="btn btn-outline-secondary" for="btn-check-3-sDriver">CAN-BUS</label>
+
+        <span class="input-group-text bg-primary">Controller:</span>
+        <input type="checkbox" class="btn-check" id="btn-check-sController" autocomplete="off">
+        <label class="btn btn-outline-primary" for="btn-check-sController">Cytron 12v</label>
+
+        <input type="checkbox" class="btn-check" id="btn-check-2-sController" autocomplete="off">
+        <label class="btn btn-outline-primary" for="btn-check-2-sController">Cytron 24v</label>
+
+        <input type="checkbox" class="btn-check" id="btn-check-3-sController" autocomplete="off">
+        <label class="btn btn-outline-primary" for="btn-check-3-sController">Cytron hydraulic</label>
+
+        <input type="checkbox" class="btn-check" id="btn-check-4-sController" autocomplete="off">
+        <label class="btn btn-outline-primary" for="btn-check-4-sController">CAN-BUS</label>
+
+      </div>
+      <button type="button" class="btn btn-primary my-4" id="btn-search">Search<span class="ms-4"><svg width="20"
+            height="20" class="DocSearch-Search-Icon" viewBox="0 0 20 20">
+            <path
+              d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z"
+              stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+            </path>
+          </svg></span></button>
+    </form>
+
+    <table class="table table-striped table-hover data-table d-none">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">Discourse</th>
+          <th scope="col">Telegram</th>
+          <th scope="col">Brand</th>
+          <th scope="col">Model</th>
+          <th scope="col">WAS</th>
+          <th scope="col">PCB</th>
+          <th scope="col">Driver</th>
+          <th scope="col">Controller</th>
+        </tr>
+      </thead>
+      <tbody id="data-table"></tbody>
+    </table>
+
+
+  </main>
+
+  <!-- Modal -->
+  <div class="modal fade" id="recordModal" tabindex="-1" aria-labelledby="RecordModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5">Configuration Record </h1>
+          <p class="fs-6 ms-4">a34124f</p>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link aog-bg-tab  border-bottom-0" id="wheel-tab" data-bs-toggle="tab"
+                data-bs-target="#wheel-tab-pane" type="button" role="tab" aria-controls="whell-tab-pane"
+                aria-selected="true"><img height="48px" src="./assets/img/wheel.png"></button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link aog-bg-tab border-bottom-0 pb-2" id="pot-tab" data-bs-toggle="tab"
+                data-bs-target="#pot-tab-pane" type="button" role="tab" aria-controls="pot-tab-pane"
+                aria-selected="false"><img height="48px" src="./assets/img/pot.png"></button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link aog-bg-tab border-bottom-0" id="stanley-tab" data-bs-toggle="tab"
+                data-bs-target="#stanley-tab-pane" type="button" role="tab" aria-controls="stanley-tab-pane"
+                aria-selected="false"><img height="48px" src="./assets/img/stanley.png"></button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link aog-bg-tab border-bottom-0" id="pp-tab" data-bs-toggle="tab"
+                data-bs-target="#pp-tab-pane" type="button" role="tab" aria-controls="pp-tab-pane"
+                aria-selected="false"><img height="48px" src="./assets/img/pp.png"></button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active aog-bg-tab border-bottom-0" id="ad-tab" data-bs-toggle="tab"
+                data-bs-target="#ad-tab-pane" type="button" role="tab" aria-controls="ad-tab-pane"
+                aria-selected="false"><img height="48px" src="./assets/img/fileMenu.png"></button>
+            </li>
+          </ul>
+          <div class="tab-content aog-bg" id="myTabContent">
+            <div class="tab-pane fade" id="wheel-tab-pane" role="tabpanel" aria-labelledby="wheel-tab" tabindex="0">
+              <div class="d-flex justify-content-between">
+                <span class="text-center mx-5 flex-grow-1">
+                  <p class="fs-6 pt-3 m-0">WAS Zero</p>
+                  <input type="range" class="form-range" id="was" min="-25" max="25">
+                  <p class="fs-6 pt-3 m-0">Counts per Degree</p>
+                  <input type="range" class="form-range" id="cpd" min="1" max="255">
+                  <p class="fs-6 pt-3 m-0">Ackermann</p>
+                  <input type="range" class="form-range" id="ackermann" min="1" max="200">
+                  <p class="fs-6 pt-3 m-0">Max Steer Angle</p>
+                  <input type="range" class="form-range" id="msa" min="10" max="80">
+                </span>
+                <span class="mt-4 mx-3">
+                  <img src="./assets/img/wheelData.png">
+                </span>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="pot-tab-pane" role="tabpanel" aria-labelledby="pot-tab" tabindex="0">
+              <div class="d-flex justify-content-between">
+                <span class="text-center mx-5 flex-grow-1">
+                  <p class="fs-4 fw-bold">Motor or Hydraulic Gain</p>
+                  <p class="fs-6 pt-3 m-0">Proportional Gain</p>
+                  <input type="range" class="form-range" id="pg" min="0" max="200" onchange="updateLabel(this)">
+                  <span class="value-label" id="pg-value">50</span>
+                  <p class="fs-6 pt-3 m-0">Maximum Limit</p>
+                  <input type="range" class="form-range" id="ml" min="0" max="254">
+                  <p class="fs-6 pt-3 m-0">Minimum to move</p>
+                  <input type="range" class="form-range" id="mm" min="0" max="100">
+                </span>
+                <span class="mt-0 mx-3">
+                  <img src="./assets/img/potData.png">
+                </span>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="stanley-tab-pane" role="tabpanel" aria-labelledby="stanley-tab" tabindex="0">
+              <div class="d-flex justify-content-between">
+                <span class="text-center mx-5 flex-grow-1">
+                  <p class="fs-4 fw-bold text-warning">Stanley Gains</p>
+                  <p class="fs-6 pt-4 m-0">Aggressiveness</p>
+                  <input type="range" class="form-range" id="sd" min="0.1" max="4">
+                  <p class="fs-6 pt-4 m-0">Overshoot Reduction</p>
+                  <input type="range" class="form-range" id="sh" min="0.1" max="4">
+                  <p class="fs-6 pt-4 m-0">Integral</p>
+                  <input type="range" class="form-range" id="si" min="0" max="100">
+                </span>
+                <span class="mt-3 mx-3">
+                  <img src="./assets/img/stanleyData.png">
+                </span>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="pp-tab-pane" role="tabpanel" aria-labelledby="pp-tab" tabindex="0">
+              <div class="d-flex justify-content-between">
+                <span class="text-center mx-5 flex-grow-1">
+                  <p class="fs-4 fw-bold text-info">Pure Pursuit</p>
+                  <p class="fs-6 pt-3 m-0">Acquire Look Ahead</p>
+                  <input type="range" class="form-range" id="ppala" min="1" max="5">
+                  <p class="fs-6 pt-3 m-0">Hold Look Ahead</p>
+                  <input type="range" class="form-range" id="pphla" min="1" max="5">
+                  <p class="fs-6 pt-3 m-0">Look Ahead Speed Gain</p>
+                  <input type="range" class="form-range" id="ppsg" min="0.5" max="3">
+                  <p class="fs-6 pt-3 m-0">Integral</p>
+                  <input type="range" class="form-range" id="ppi" min="0" max="100">
+                </span>
+                <span class="mt-3 mx-3">
+                  <img src="./assets/img/ppData.png">
+                </span>
+              </div>
+            </div>
+            <div class="tab-pane fade show active" id="ad-tab-pane" role="tabpanel" aria-labelledby="ad-tab"
+              tabindex="0">
+              <form class="p-4" id="record-form">
+                <div class="row mb-3">
+                  <label for="iDiscourse" class="col-sm-2 col-form-label">Discourse</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="Discourse User Name" id="iDiscourse">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="iTelegram" class="col-sm-2 col-form-label">Telegram</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="Telegram User Name" id="iTelegram">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="iBrand" class="col-sm-2 col-form-label">V. Brand</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="ie. Fendt, MF, NH, JD..." id="iBrand">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="iModel" class="col-sm-2 col-form-label">V. Model</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="ie. 6S.155..." id="iModel">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="iWas" class="col-sm-2 col-form-label">WAS type</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="ie. RHQ0013..." id="iWas">
+                  </div>
+                </div>
+                <div class="input-group mb-3">
+                  <label class="input-group-text" for="ipcb">PCB type</label>
+                  <select class="form-select" id="ipcb">
+                    <option selected>Choose...</option>
+                    <option value="1">AIO 2.4</option>
+                    <option value="2">PCB 2</option>
+                    <option value="3">PCB 4.1</option>
+                    <option value="4">Kaupoi</option>
+                    <option value="5">Autosteer.cc</option>
+                    <option value="6">ACE</option>
+                    <option value="7">CANBUS</option>
+                    <option value="8">Other</option>
+                  </select>
+                </div>
+                <div class="input-group mb-3">
+                  <label class="input-group-text" for="iDriver">Driver</label>
+                  <select class="form-select" id="iDriver">
+                    <option selected>Electric</option>
+                    <option value="1">Hydraulic</option>
+                    <option value="2">CAN-BUS</option>
+                  </select>
+                </div>
+                <div class="input-group mb-3">
+                  <label class="input-group-text" for="iController">Drive controller</label>
+                  <select class="form-select" id="iController">
+                    <option selected>Choose...</option>
+                    <option value="1">Cytron 12v</option>
+                    <option value="2">Cytron 24v</option>
+                    <option value="3">Cytron hydraulic</option>
+                    <option value="4">CAN-BUS</option>
+                  </select>
+                </div>
+                <div class="row mb-3">
+                  <label for="iComm" class="col-sm-2 col-form-label">Comments</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="ie. Any short comment or piece of advise..."
+                      id="iComm">
+                  </div>
+                </div>
+                <fieldset class="row mb-3">
+                  <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
+                  <div class="col-sm-10">
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1"
+                        checked>
+                      <label class="form-check-label" for="gridRadios1">
+                        First radio
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                      <label class="form-check-label" for="gridRadios2">
+                        Second radio
+                      </label>
+                    </div>
+                  </div>
+                </fieldset>
+                <div class="row mb-3">
+                  <div class="col-sm-10 offset-sm-2">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="gridCheck1">
+                      <label class="form-check-label" for="gridCheck1">
+                        Example checkbox
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="iPassword" class="col-sm-2 col-form-label">Password</label>
+                  <div class="col-sm-10">
+                    <input type="password" class="form-control" data-key="1" id="iPassword">
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btn-close">Close</button>
+          <button type="button" class="btn btn-primary" id="btn-save">Save changes<span class="ms-3"><svg
+                xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
+                <path
+                  d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
+              </svg></span></button>
+        </div>
       </div>
     </div>
   </div>
-  <div class="row mb-3">
-    <label for="iPassword" class="col-sm-2 col-form-label">Password</label>
-    <div class="col-sm-10">
-      <input type="password" class="form-control" data-key="1" id="iPassword">
-    </div>
-  </div>
-</form>
-		</div>
-	  </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btn-close">Close</button>
-        <button type="button" class="btn btn-primary" id="btn-save">Save changes<span class="ms-3"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/></svg></span></button>
-      </div>
-    </div>
-  </div>
-</div>
 
-<script src="./assets/js/bootstrap.bundle.min.js"></script>
-<script>
-document.querySelector("#btn-search").addEventListener("click", search);
-document.querySelector("#btn-save").addEventListener("click", save);
+  <script src="./assets/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.querySelector("#btn-search").addEventListener("click", search);
+    document.querySelector("#btn-save").addEventListener("click", save);
 
 
-function getParameterByName(name){
-    let regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
-    results = regex.exec(location.search);
-    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-}
+    function getParameterByName(name) {
+      let regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
+      results = regex.exec(location.search);
+      return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
 
-function save(){
-	let f = document.querySelector("#record-form");
+    function save() {
+      let f = document.querySelector("#record-form");
 
-	if(f.iPassword.value === f.iPassword.dataset.key){
-		//build the url to the specific record
-		let url = "https://aogep.azurewebsites.net/api/getDetail?id="+document.querySelector("div#recordModal div.modal-header > p").innerHTML;
+      // send it off - the password should never be retrieved to the form, so the back-end can handle the checking/rejection of valid pw
+      if (f.iPassword.value === f.iPassword.dataset.key) {
+        //build the url to the specific record
+        let url = "https://aogdb.azurewebsites.net/api/updateDocument?id=" + document.querySelector("div#recordModal div.modal-header > p").innerHTML;
 
-		//build the json object from the form data
-		let payload = {
-			discourse:	f.iDiscourse.value,
-			telegram:	f.iTelegram.value,
-			brand:		f.iBrand.value,
-			model:		f.iModel.value,
-			was:		f.iWas.value,
-			pcb:		f.ipcb.value,
-			driver:		f.iDriver.value,
-			controller:	f.iController.value,
-			comment:	f.iComm.value
-		};
+        //build the json object from the form data
+        let payload = {
+          discourse: f.iDiscourse.value,
+          telegram: f.iTelegram.value,
+          brand: f.iBrand.value,
+          model: f.iModel.value,
+          was: f.iWas.value,
+          pcb: f.ipcb.value,
+          driver: f.iDriver.value,
+          controller: f.iController.value,
+          comment: f.iComm.value,
+          password: f.password.value
+        };
 
-		let data = new FormData();
-		data.append( "json", JSON.stringify( payload ) );
+        let data = new FormData();
+        data.append("json", JSON.stringify(payload));
 
-		//send the data to the api
-/* CORS issues in the API set-up
+        //send the data to the api
+        /* CORS issues in the API set-up
+        
+            fetch(url,{
+              method: "POST",
+              body: data
+            })
+            .then((res)=>{ return res.json(); })
+            .then((data)=>{ 
+              console.log( JSON.stringify( data ) );
+            	
+              //close the modal
+              document.querySelector("#btn-close").click();
+            }).catch(console.error);
+        
+        */
+      }
+    }
 
-		fetch(url,{
-			method: "POST",
-			body: data
-		})
-		.then((res)=>{ return res.json(); })
-		.then((data)=>{ 
-			console.log( JSON.stringify( data ) );
-			
-			//close the modal
-			document.querySelector("#btn-close").click();
-		}).catch(console.error);
 
-*/
-	}
-}
+    function search() {
+      // from the form values create the json/url to request the data from the db
+      let f = document.querySelector("#search-form");
+      let url = "https://aogdb.azurewebsites.net/api/getDetail?";
+      if (f.sDiscourse.value) url += "discourse=" + f.sDiscourse.value;
+      if (f.sTelegram.value) url += "telegram=" + f.sTelegram.value;
+      if (f.sBrand.value) url += "brand=" + f.sBrand.value;
+      if (f.sModel.value) url += "model=" + f.sModel.value;
+      if (f.sWas.value) url += "was=" + f.sWas.value;
 
+      // request data from the api with fetch, like:
+      /* CORS issue to solve
+        fetch(url).then(r => r.json()) //converts the txt in json
+          .then(d =>{ //include data in the table
+            document.querySelector("table.data-table").classList.remove("d-none");
+            document.querySelector("#data-table").innerHTML +=`
+          <tr data-id="{$d.id}">
+            <td>{$d.discourse}</td>
+            <td>{$d.telegram}</td>
+            <td>{$d.brand}</td>
+            <td>{$d.model}</td>
+            <td>{$d.was}</td>
+            <td>{$d.pcb}</td>
+            <td>{$d.driver}</td>
+            <td>{$d.controller}</td>
+          </tr>`;
+          }).catch(console.error);
+      */
+      //display the data table
+      document.querySelector("table.data-table").classList.remove("d-none");
 
-function search(){
-	// from the form values create the json/url to request the data from the db
-	let f = document.querySelector("#search-form");
-	let url = "https://aogep.azurewebsites.net/api/getDetail?";
-	if(f.sDiscourse.value) url+="discourse="+f.sDiscourse.value;
-	if(f.sTelegram.value) url+="telegram="+f.sTelegram.value;
-	if(f.sBrand.value) url+="brand="+f.sBrand.value;
-	if(f.sModel.value) url+="model="+f.sModel.value;
-	if(f.sWas.value) url+="was="+f.sWas.value;
+      //example to simulate some dummy data
+      let t = document.querySelector("#data-table");
+      t.innerHTML = "";// Reset the table
 
-	// request data from the api with fetch, like:
-/* CORS issue to solve
-	fetch(url).then(r => r.json()) //converts the txt in json
-		.then(d =>{ //include data in the table
-			document.querySelector("table.data-table").classList.remove("d-none");
-			document.querySelector("#data-table").innerHTML +=`
-		<tr data-id="{$d.id}">
-			<td>{$d.discourse}</td>
-			<td>{$d.telegram}</td>
-			<td>{$d.brand}</td>
-			<td>{$d.model}</td>
-			<td>{$d.was}</td>
-			<td>{$d.pcb}</td>
-			<td>{$d.driver}</td>
-			<td>{$d.controller}</td>
-		</tr>`;
-		}).catch(console.error);
-*/	
-	//display the data table
-	document.querySelector("table.data-table").classList.remove("d-none");
-
-//example to simulate some dummy data
-	let t = document.querySelector("#data-table");
-	t.innerHTML ="";// Reset the table
-
-	t.innerHTML +=`<tr data-id="1">
+      t.innerHTML += `<tr data-id="1">
 			<td>Mark</td>
 			<td>mar</td>
 			<td>MF</td>
@@ -423,7 +472,7 @@ function search(){
 			<td>Electric</td>
 			<td>Cytron 12v</td>
 		</tr>`;
-	t.innerHTML +=`
+      t.innerHTML += `
 		<tr data-id="2">
 			<td>Jake</td>
 			<td>jans</td>
@@ -434,7 +483,7 @@ function search(){
 			<td>Electric</td>
 			<td>Cytron 12v</td>
 		</tr>`;
-	t.innerHTML +=`
+      t.innerHTML += `
 		<tr data-id="3">
 			<td>Daniel</td>
 			<td>Dan</td>
@@ -446,54 +495,72 @@ function search(){
 			<td>Cytron 12v</td>
 		</tr>`;
 
-	//add capabilities to retrieve and show details from a record
-	document.querySelectorAll("#data-table > tr").forEach(el=>{el.addEventListener("click",e=>{
-		showRecord(el.dataset.id);
-		showR();//example to simulate some dummy data
-	});});
+      //add capabilities to retrieve and show details from a record
+      document.querySelectorAll("#data-table > tr").forEach(el => {
+        el.addEventListener("click", e => {
+          showRecord(el.dataset.id);
+          //showR();//example to simulate some dummy data
+        });
+      });
 
-}
+    }
 
-function showRecord(id){
-	let url = "https://aogep.azurewebsites.net/api/getDetail?id="+id;
-console.log(url);
+    function updateLabel(element) {
+      var value = $(element).val();
+      var label = $(element).siblings('.value-label');
+      label.text(value);
+    }
 
-/* CORS issue to solve
-	fetch(url).then(r => r.json())
-		.then(data =>{ 
-			console.log(data); 
+    $('input[type="range"]').on('change', function () {
+      updateLabel(this);
+    });
 
-			document.querySelector("#was").value = +data.setAS_wasOffset;
-			document.querySelector("#cpd").value = +data.setAS_countsPerDegree;
-			document.querySelector("#ackermann").value = +data.setAS_ackerman;
-			document.querySelector("#pg").value = +data.setAS_Kp;
-			document.querySelector("#ml").value = +data.setAS_highSteerPWM;
-			document.querySelector("#mm").value = +data.setAS_minSteerPWM;
+    function showRecord(id) {
+      let url = "https://aogdb.azurewebsites.net/api/getDetail?uniqueID=4"; // + id
+      url = "http://localhost:7071/api/getDetail";
+      console.log(url);
 
-//these fields are not in the database
-	document.querySelector("#msa").value = +d.setAS_countsPerDegree;
-	document.querySelector("#sd").value = +d.setAS_countsPerDegree;
-	document.querySelector("#sh").value = +d.setAS_countsPerDegree;
-	document.querySelector("#si").value = +d.setAS_countsPerDegree;
-	document.querySelector("#ppala").value = +d.setAS_countsPerDegree;
-	document.querySelector("#pphla").value = +d.setAS_countsPerDegree;
-	document.querySelector("#ppsg").value = +d.setAS_countsPerDegree;
-	document.querySelector("#ppi").value = +d.setAS_countsPerDegree;
+      /* CORS issue to solve */
+      fetch(url).then(r => r.json())
+        .then(data => {
+          console.log(data);
+          console.log("ANDREW");
 
-	document.querySelector("#iPassword").dataset.key = +d.setAS_countsPerDegree;
+          // these fields need scaled appropriately, and LABELLED
+          // Steer
+          document.querySelector("#was").value = + 10; //data.setAS_wasOffset;
+          document.querySelector("#cpd").value = + 20; //data.setAS_countsPerDegree;
+          document.querySelector("#ackermann").value = + data.setAS_ackerman;
 
-	
-			//show modal
-			const myModal = new bootstrap.Modal('#recordModal');
-			myModal.show();
+          // PWM
+          document.querySelector("#pg").value = + data.setAS_Kp;
+          document.querySelector("#ml").value = + data.setAS_highSteerPWM;
+          document.querySelector("#mm").value = + data.setAS_minSteerPWM;
 
-		}).catch(console.error);
-*/	
-}
+          document.querySelector("#msa").value = + data.setVehicle_maxSteer;
+          // Stanley
+          document.querySelector("#sd").value = + data.stanleyDistanceErrorGain;
+          document.querySelector("#sh").value = + data.stanleyHeadingErrorGain;
+          document.querySelector("#si").value = + data.stanleyIntegralGainAB;
+          // Pure Pursuit
+          document.querySelector("#ppala").value = + data.setVehicle_goalPointLookAhead;
+          document.querySelector("#pphla").value = + data.setVehicle_toolLookAheadOn;
+          document.querySelector("#ppsg").value = + data.setVehicle_goalPointLookAheadMult;
+          document.querySelector("#ppi").value = + data.purePursuitIntegralGainAB;
 
-function showR(){
-	//the fist variable has some corrupt fields remove, the database should be reviewed
-	let data = `{
+          document.querySelector("#iPassword").dataset.key = + "NOT TELLING";
+
+
+          //show modal
+          const myModal = new bootstrap.Modal('#recordModal');
+          myModal.show();
+
+        }).catch(console.error);
+    }
+
+    function showR() {
+      //the fist variable has some corrupt fields remove, the database should be reviewed
+      let data = `{
   "setDisplay_colorFieldNight": "60, 60, 60",
   "setAS_wasOffset": "3",
   "setMenu_isSpeedoOn": "True",
@@ -594,7 +661,7 @@ function showR(){
   "Uri": "dbs/YrUsAA==/colls/YrUsAIDd3y0=/docs/YrUsAIDd3y06AAAAAAAAAA==/",
   "Attachments": "attachments/"
 }`;
-	let da = `{
+      let da = `{
   "setDisplay_colorFieldNight": "60, 60, 60",
   "setAS_wasOffset": "3",
   "setMenu_isSpeedoOn": "True",
@@ -698,47 +765,47 @@ function showR(){
   "Attachments": "attachments/"
 }`;
 
-	let d = JSON.parse(data);//creates an object from the retrieved text
-	console.log(d);
-	//include the object values in the form (to be reviewed the min and max values allowed)
-	document.querySelector("#was").value = +d.setAS_wasOffset;
-	document.querySelector("#cpd").value = +d.setAS_countsPerDegree;
-	document.querySelector("#ackermann").value = +d.setAS_ackerman;
-	document.querySelector("#pg").value = +d.setAS_Kp;
-	document.querySelector("#ml").value = +d.setAS_highSteerPWM;
-	document.querySelector("#mm").value = +d.setAS_minSteerPWM;
-/*
-//these fields are not in the database
-	document.querySelector("#msa").value = +d.setAS_countsPerDegree;
-	document.querySelector("#sd").value = +d.setAS_countsPerDegree;
-	document.querySelector("#sh").value = +d.setAS_countsPerDegree;
-	document.querySelector("#si").value = +d.setAS_countsPerDegree;
-	document.querySelector("#ppala").value = +d.setAS_countsPerDegree;
-	document.querySelector("#pphla").value = +d.setAS_countsPerDegree;
-	document.querySelector("#ppsg").value = +d.setAS_countsPerDegree;
-	document.querySelector("#ppi").value = +d.setAS_countsPerDegree;
-*/
+      let d = JSON.parse(data);//creates an object from the retrieved text
+      console.log(d);
+      //include the object values in the form (to be reviewed the min and max values allowed)
+      document.querySelector("#was").value = +d.setAS_wasOffset;
+      document.querySelector("#cpd").value = +d.setAS_countsPerDegree;
+      document.querySelector("#ackermann").value = +d.setAS_ackerman;
+      document.querySelector("#pg").value = +d.setAS_Kp;
+      document.querySelector("#ml").value = +d.setAS_highSteerPWM;
+      document.querySelector("#mm").value = +d.setAS_minSteerPWM;
+      /*
+      //these fields are not in the database
+        document.querySelector("#msa").value = +d.setAS_countsPerDegree;
+        document.querySelector("#sd").value = +d.setAS_countsPerDegree;
+        document.querySelector("#sh").value = +d.setAS_countsPerDegree;
+        document.querySelector("#si").value = +d.setAS_countsPerDegree;
+        document.querySelector("#ppala").value = +d.setAS_countsPerDegree;
+        document.querySelector("#pphla").value = +d.setAS_countsPerDegree;
+        document.querySelector("#ppsg").value = +d.setAS_countsPerDegree;
+        document.querySelector("#ppi").value = +d.setAS_countsPerDegree;
+      */
 
-	document.querySelector("div#recordModal div.modal-header > p").innerHTML = Math.floor(Math.random() * 100);//set the id, dummy as the data can not be collected from api
-	const myModal = new bootstrap.Modal('#recordModal');
-	myModal.show();
+      document.querySelector("div#recordModal div.modal-header > p").innerHTML = Math.floor(Math.random() * 100);//set the id, dummy as the data can not be collected from api
+      const myModal = new bootstrap.Modal('#recordModal');
+      myModal.show();
 
-}
+    }
 
-(function() {
-//to check the parameters in the url
-if(getParameterByName("mode")==="1"){//the mode parameter could be used to diferenciate whether should be only view or could have also edit capabilities
-	let id = getParameterByName("id");
-	if(id){
-		showR();//now is only dummy data due to the CORS issues in the db, the function to be called should be showRecord(id);
+    (function () {
+      //to check the parameters in the url
+      if (getParameterByName("mode") === "1") {//the mode parameter could be used to diferenciate whether should be only view or could have also edit capabilities
+        let id = getParameterByName("id");
+        if (id) {
+          //showR();//now is only dummy data due to the CORS issues in the db, the function to be called should be showRecord(id);
 
-		//get data from db
-//		showRecord(id);
-	}
-}
-})();
-	</script>
+          //get data from db
+          showRecord(id);
+        }
+      }
+    })();
+  </script>
 
-    </body>
+</body>
+
 </html>
-	
