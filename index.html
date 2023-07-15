@@ -53,9 +53,10 @@
         <input type="text" aria-label="Telegram" class="form-control" placeholder="Telegram Name" id="sTelegram">
       </div>
       <div class="input-group">
-        <span class="input-group-text">Ve. Brand:</span>
-        <input type="text" aria-label="Discourse" class="form-control" placeholder="ie. Fendt, MF, NH, JD..."
-          id="sBrand">
+        <span class="input-group-text">Brand:</span>
+        <select class="form-select" id="iBrandFilter" width="200">
+          <option selected>Choose...</option>
+        </select>
         <span class="input-group-text">V. Model:</span>
         <input type="text" aria-label="Telegram" class="form-control" placeholder="ie. 6S.155..." id="sModel">
       </div>
@@ -88,6 +89,8 @@
         <input type="checkbox" class="btn-check" id="btn-check-7-sPCB" autocomplete="off">
         <label class="btn btn-outline-info" for="btn-check-7-sPCB">Other</label>
       </div>
+
+
       <div class="input-group mt-2">
         <span class="input-group-text bg-secondary">Driver:</span>
         <input type="checkbox" class="btn-check" id="btn-check-sDriver" autocomplete="off">
@@ -445,7 +448,7 @@
       let url = urlstub + "getDetail?";
       if (f.sDiscourse.value) url += "discourse=" + f.sDiscourse.value;
       if (f.sTelegram.value) url += "telegram=" + f.sTelegram.value;
-      if (f.sBrand.value) url += "brand=" + f.sBrand.value;
+      if (f.iBrandFilter.value) url += "brand=" + f.iBrandFilter.value;
       if (f.sModel.value) url += "model=" + f.sModel.value;
       if (f.sWas.value) url += "was=" + f.sWas.value;
 
@@ -825,9 +828,10 @@
 
     }
 
-    function PopulateDrivers() {
+    //function PopulateDrivers() {
       document.addEventListener('DOMContentLoaded', function () {
         var BrandElement = document.getElementById('iBrand');
+        var BrandFilterElement = document.getElementById('iBrandFilter');
         var PCBElement = document.getElementById('ipcb');
         var driverElement = document.getElementById('iDriver');
         var controllerElement = document.getElementById('iController');
@@ -847,8 +851,14 @@
               var optionElement = document.createElement('option');
               optionElement.value = option;
               optionElement.textContent = option;
-
               BrandElement.appendChild(optionElement);
+
+              // and again for the filter dropdown
+              var optionElement = document.createElement('option');
+              optionElement.value = option;
+              optionElement.textContent = option;
+              BrandFilterElement.appendChild(optionElement);
+
             });
             data.PCBType.forEach(function (option) {
               var optionElement = document.createElement('option');
@@ -876,7 +886,7 @@
             console.log(error);
           });
       });
-    }
+    //}
 
     var sliders = document.querySelectorAll('input[type="range"]');
     sliders.forEach(function (sl) {
@@ -889,7 +899,7 @@
       }
     });
 
-    PopulateDrivers();
+    //PopulateDrivers();
   </script>
 </body>
 
