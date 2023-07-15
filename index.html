@@ -97,7 +97,7 @@
         <label class="btn btn-outline-secondary" for="btn-check-2-sDriver">Hydraulic</label>
 
         <input type="checkbox" class="btn-check" id="btn-check-3-sDriver" autocomplete="off">
-        <label class="btn btn-outline-secondary" for="btn-check-3-sDriver">CAN-BUS</label>
+        <label class="btn btn-outline-secondary" for="btn-check-3-sDriver">CANBUS</label>
 
         <span class="input-group-text bg-primary">Controller:</span>
         <input type="checkbox" class="btn-check" id="btn-check-sController" autocomplete="off">
@@ -110,7 +110,7 @@
         <label class="btn btn-outline-primary" for="btn-check-3-sController">Cytron hydraulic</label>
 
         <input type="checkbox" class="btn-check" id="btn-check-4-sController" autocomplete="off">
-        <label class="btn btn-outline-primary" for="btn-check-4-sController">CAN-BUS</label>
+        <label class="btn btn-outline-primary" for="btn-check-4-sController">CANBUS</label>
 
       </div>
       <button type="button" class="btn btn-primary my-4" id="btn-search">Search<span class="ms-4"><svg width="20"
@@ -184,20 +184,24 @@
                 <span class="text-center mx-5 flex-grow-1">
 
                   <p class="fs-6 pt-3 m-0">WAS Zero
-                  <span class="value-label" id="was-value">50</span></p>
+                    <span class="value-label" id="was-value">50</span>
+                  </p>
                   <input type="range" class="form-range" id="was" min="-4096" max="4096">
                   <!-- the min/max of above relates to CPD value, take that into effect!! -->
 
                   <p class="fs-6 pt-3 m-0">Counts per Degree
-                  <span class="value-label" id="cpd-value">50</span></p>
+                    <span class="value-label" id="cpd-value">50</span>
+                  </p>
                   <input type="range" class="form-range" id="cpd" min="1" max="255">
 
                   <p class="fs-6 pt-3 m-0">Ackermann
-                  <span class="value-label" id="ackermann-value">50</span></p>
+                    <span class="value-label" id="ackermann-value">50</span>
+                  </p>
                   <input type="range" class="form-range" id="ackermann" min="1" max="200">
 
                   <p class="fs-6 pt-3 m-0">Max Steer Angle
-                  <span class="value-label" id="msa-value">50</span></p>
+                    <span class="value-label" id="msa-value">50</span>
+                  </p>
                   <input type="range" class="form-range" id="msa" min="10" max="80">
                 </span>
                 <span class="mt-4 mx-3">
@@ -211,15 +215,18 @@
                   <p class="fs-4 fw-bold">Motor or Hydraulic Gain</p>
 
                   <p class="fs-6 pt-3 m-0">Proportional Gain
-                  <span class="value-label" id="pg-value">50</span></p>
+                    <span class="value-label" id="pg-value">50</span>
+                  </p>
                   <input type="range" class="form-range" id="pg" min="0" max="200">
 
                   <p class="fs-6 pt-3 m-0">Maximum Limit
-                  <span class="value-label pt-6" id="ml-value">50</span></p>
+                    <span class="value-label pt-6" id="ml-value">50</span>
+                  </p>
                   <input type="range" class="form-range" id="ml" min="0" max="254">
 
                   <p class="fs-6 pt-3 m-0">Minimum to move
-                  <span class="value-label" id="mm-value">50</span></p>
+                    <span class="value-label" id="mm-value">50</span>
+                  </p>
                   <input type="range" class="form-range" id="mm" min="0" max="100">
                 </span>
                 <span class="mt-0 mx-3">
@@ -234,15 +241,18 @@
                   <p class="fs-4 fw-bold text-warning">Stanley Gains</p>
 
                   <p class="fs-6 pt-4 m-0">Aggressiveness
-                  <span class="value-label" id="sd-value">50</span></p>
+                    <span class="value-label" id="sd-value">50</span>
+                  </p>
                   <input type="range" class="form-range" id="sd" min="0.1" max="4" step="0.1">
 
                   <p class="fs-6 pt-4 m-0">Overshoot Reduction
-                  <span class="value-label" id="sh-value">50</span></p>
+                    <span class="value-label" id="sh-value">50</span>
+                  </p>
                   <input type="range" class="form-range" id="sh" min="0.1" max="4" step="0.1">
 
                   <p class="fs-6 pt-4 m-0">Integral
-                  <span class="value-label" id="si-value">50</span></p>
+                    <span class="value-label" id="si-value">50</span>
+                  </p>
                   <input type="range" class="form-range" id="si" min="0" max="100">
                 </span>
                 <span class="mt-3 mx-3">
@@ -257,19 +267,23 @@
                   <p class="fs-4 fw-bold text-info">Pure Pursuit</p>
 
                   <p class="fs-6 pt-3 m-0">Acquire Look Ahead
-                  <span class="value-label" id="ppala-value">50</span></p>
+                    <span class="value-label" id="ppala-value">50</span>
+                  </p>
                   <input type="range" class="form-range" id="ppala" min="1" max="5" step="0.1">
 
                   <p class="fs-6 pt-3 m-0">Hold Look Ahead
-                  <span class="value-label" id="pphla-value">50</span></p>
+                    <span class="value-label" id="pphla-value">50</span>
+                  </p>
                   <input type="range" class="form-range" id="pphla" min="1" max="5" step="0.1">
 
                   <p class="fs-6 pt-3 m-0">Look Ahead Speed Gain
-                  <span class="value-label" id="ppsg-value">50</span></p>
+                    <span class="value-label" id="ppsg-value">50</span>
+                  </p>
                   <input type="range" class="form-range" id="ppsg" min="0.5" max="3" step="0.1">
 
                   <p class="fs-6 pt-3 m-0">Integral
-                  <span class="value-label" id="ppi-value">50</span></p>
+                    <span class="value-label" id="ppi-value">50</span>
+                  </p>
                   <input type="range" class="form-range" id="ppi" min="0" max="100">
                 </span>
                 <span class="mt-3 mx-3">
@@ -292,14 +306,18 @@
                     <input type="text" class="form-control" placeholder="Telegram User Name" id="iTelegram">
                   </div>
                 </div>
+
                 <div class="row mb-3">
-                  <label for="iBrand" class="col-sm-2 col-form-label">V. Brand</label>
+                  <label for="iBrand" class="col-sm-2 col-form-label">Brand</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" placeholder="ie. Fendt, MF, NH, JD..." id="iBrand">
+                    <select class="form-select" id="iBrand">
+                    <option selected>Choose...</option>
+                    </select>
                   </div>
                 </div>
+
                 <div class="row mb-3">
-                  <label for="iModel" class="col-sm-2 col-form-label">V. Model</label>
+                  <label for="iModel" class="col-sm-2 col-form-label">Model</label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" placeholder="ie. 6S.155..." id="iModel">
                   </div>
@@ -314,32 +332,18 @@
                   <label class="input-group-text" for="ipcb">PCB type</label>
                   <select class="form-select" id="ipcb">
                     <option selected>Choose...</option>
-                    <option value="1">AIO 2.4</option>
-                    <option value="2">PCB 2</option>
-                    <option value="3">PCB 4.1</option>
-                    <option value="4">Kaupoi</option>
-                    <option value="5">Autosteer.cc</option>
-                    <option value="6">ACE</option>
-                    <option value="7">CANBUS</option>
-                    <option value="8">Other</option>
                   </select>
                 </div>
                 <div class="input-group mb-3">
                   <label class="input-group-text" for="iDriver">Driver</label>
                   <select class="form-select" id="iDriver">
-                    <option selected>Electric</option>
-                    <option value="1">Hydraulic</option>
-                    <option value="2">CAN-BUS</option>
+                    <option selected>Choose...</option>
                   </select>
                 </div>
                 <div class="input-group mb-3">
                   <label class="input-group-text" for="iController">Drive controller</label>
                   <select class="form-select" id="iController">
                     <option selected>Choose...</option>
-                    <option value="1">Cytron 12v</option>
-                    <option value="2">Cytron 24v</option>
-                    <option value="3">Cytron hydraulic</option>
-                    <option value="4">CAN-BUS</option>
                   </select>
                 </div>
                 <div class="row mb-3">
@@ -349,38 +353,14 @@
                       id="iComm">
                   </div>
                 </div>
-                <fieldset class="row mb-3">
-                  <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
-                  <div class="col-sm-10">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1"
-                        checked>
-                      <label class="form-check-label" for="gridRadios1">
-                        First radio
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                      <label class="form-check-label" for="gridRadios2">
-                        Second radio
-                      </label>
-                    </div>
-                  </div>
-                </fieldset>
-                <div class="row mb-3">
-                  <div class="col-sm-10 offset-sm-2">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="gridCheck1">
-                      <label class="form-check-label" for="gridCheck1">
-                        Example checkbox
-                      </label>
-                    </div>
-                  </div>
-                </div>
+
                 <div class="row mb-3">
                   <label for="iPassword" class="col-sm-2 col-form-label">Password</label>
                   <div class="col-sm-10">
-                    <input type="password" class="form-control" data-key="1" id="iPassword">
+                    <input type="text" class="form-control" data-key="1" id="iPassword">
+                    <p>Choose any password you like - it will be encrypted and stored in the database, and this record
+                      can only be updated by supplying the same password. It's safe to use the same password for all
+                      your machines.</p>
                   </div>
                 </div>
               </form>
@@ -402,6 +382,8 @@
 
   <script src="./assets/js/bootstrap.bundle.min.js"></script>
   <script>
+    //const urlstub = "https://aogdb.azurewebsites.net/api/";
+    const urlstub = "http://localhost:7071/api/";
     document.querySelector("#btn-search").addEventListener("click", search);
     document.querySelector("#btn-save").addEventListener("click", save);
 
@@ -418,7 +400,7 @@
       // send it off - the password should never be retrieved to the form, so the back-end can handle the checking/rejection of valid pw
       if (f.iPassword.value === f.iPassword.dataset.key) {
         //build the url to the specific record
-        let url = "https://aogdb.azurewebsites.net/api/updateDocument?id=" + document.querySelector("div#recordModal div.modal-header > p").innerHTML;
+        let url = urlstub + "updateDocument?id=" + document.querySelector("div#recordModal div.modal-header > p").innerHTML;
 
         //build the json object from the form data
         let payload = {
@@ -460,7 +442,7 @@
     function search() {
       // from the form values create the json/url to request the data from the db
       let f = document.querySelector("#search-form");
-      let url = "https://aogdb.azurewebsites.net/api/getDetail?";
+      let url = urlstub + "getDetail?";
       if (f.sDiscourse.value) url += "discourse=" + f.sDiscourse.value;
       if (f.sTelegram.value) url += "telegram=" + f.sTelegram.value;
       if (f.sBrand.value) url += "brand=" + f.sBrand.value;
@@ -536,8 +518,8 @@
     }
 
     function showRecord(id) {
-      let url = "https://aogdb.azurewebsites.net/api/getDetail?uniqueID=4"; // + id
-      url = "http://localhost:7071/api/getDetail";
+      let url = urlstub + "getDetail?uniqueID=4"; // + id
+      url = urlstub + "getDetail";
       console.log(url);
 
       /* CORS issue to solve */
@@ -545,30 +527,38 @@
         .then(data => {
           console.log(data);
 
+          document.querySelector("#iDiscourse").value = data.DiscourseID;
+          document.querySelector("#iTelegram").value = data.TelegramID;
+          // take into account if harvester, tractor etc here? Or not needed
+          document.querySelector("#iBrand").value = data.setBrand_TBrand;
+          document.querySelector("#iModel").value = data.MachineModel;
+          document.querySelector("#iComm").value = data.Comments;
+
+
           // these fields need scaled appropriately, and LABELLED
           // Steer
           document.querySelector("#was").value = +data.setAS_wasOffset;
           document.querySelector("#cpd").value = +data.setAS_countsPerDegree;
-          document.querySelector("#ackermann").value = + data.setAS_ackerman;
+          document.querySelector("#ackermann").value = +data.setAS_ackerman;
 
           // PWM
-          document.querySelector("#pg").value = + data.setAS_Kp;
-          document.querySelector("#ml").value = + data.setAS_highSteerPWM;
-          document.querySelector("#mm").value = + data.setAS_minSteerPWM;
-          document.querySelector("#msa").value = + data.setVehicle_maxSteer;
+          document.querySelector("#pg").value = +data.setAS_Kp;
+          document.querySelector("#ml").value = +data.setAS_highSteerPWM;
+          document.querySelector("#mm").value = +data.setAS_minSteerPWM;
+          document.querySelector("#msa").value = +data.setVehicle_maxSteer;
 
           // Stanley
-          document.querySelector("#sd").value = + data.stanleyDistanceErrorGain;
-          document.querySelector("#sh").value = + data.stanleyHeadingErrorGain;
-          document.querySelector("#si").value = + data.stanleyIntegralGainAB;
+          document.querySelector("#sd").value = +data.stanleyDistanceErrorGain;
+          document.querySelector("#sh").value = +data.stanleyHeadingErrorGain;
+          document.querySelector("#si").value = +data.stanleyIntegralGainAB;
 
           // Pure Pursuit
-          document.querySelector("#ppala").value = + data.setVehicle_goalPointLookAhead;
-          document.querySelector("#pphla").value = + data.setVehicle_toolLookAheadOn;
-          document.querySelector("#ppsg").value = + data.setVehicle_goalPointLookAheadMult;
-          document.querySelector("#ppi").value = + data.purePursuitIntegralGainAB;
+          document.querySelector("#ppala").value = +data.setVehicle_goalPointLookAhead;
+          document.querySelector("#pphla").value = +data.setVehicle_toolLookAheadOn;
+          document.querySelector("#ppsg").value = +data.setVehicle_goalPointLookAheadMult;
+          document.querySelector("#ppi").value = +data.purePursuitIntegralGainAB;
 
-          document.querySelector("#iPassword").dataset.key = + "NOT TELLING";
+          document.querySelector("#iPassword").dataset.key = "NOT TELLING";
 
           updateAllSliders();
 
@@ -835,6 +825,59 @@
 
     }
 
+    function PopulateDrivers() {
+      document.addEventListener('DOMContentLoaded', function () {
+        var BrandElement = document.getElementById('iBrand');
+        var PCBElement = document.getElementById('ipcb');
+        var driverElement = document.getElementById('iDriver');
+        var controllerElement = document.getElementById('iController');
+
+        // Make an AJAX request to the REST API
+        fetch(urlstub + "getStaticInfo")
+          .then(function (response) {
+            if (response.ok) {
+              return response.json();
+            } else {
+              throw new Error('Error occurred while fetching options from the API.');
+            }
+          })
+          .then(function (data) {
+            // Process the response and populate the options
+            data.Manufacturer.forEach(function (option) {
+              var optionElement = document.createElement('option');
+              optionElement.value = option;
+              optionElement.textContent = option;
+
+              BrandElement.appendChild(optionElement);
+            });
+            data.PCBType.forEach(function (option) {
+              var optionElement = document.createElement('option');
+              optionElement.value = option;
+              optionElement.textContent = option;
+
+              PCBElement.appendChild(optionElement);
+            });
+            data.Driver.forEach(function (option) {
+              var optionElement = document.createElement('option');
+              optionElement.value = option;
+              optionElement.textContent = option;
+
+              driverElement.appendChild(optionElement);
+            });
+            data.Controller.forEach(function (option) {
+              var optionElement = document.createElement('option');
+              optionElement.value = option;
+              optionElement.textContent = option;
+
+              controllerElement.appendChild(optionElement);
+            });
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      });
+    }
+
     var sliders = document.querySelectorAll('input[type="range"]');
     sliders.forEach(function (sl) {
       if (typeof sl != "undefined") {
@@ -846,6 +889,7 @@
       }
     });
 
+    PopulateDrivers();
   </script>
 </body>
 
