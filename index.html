@@ -62,20 +62,22 @@
           <option selected>Choose...</option>
         </select>
         <span class="input-group-text">V. Model:</span>
-        <input type="text" aria-label="Telegram" class="form-control" placeholder="ie. 6S.155..." id="sModel">
-      </div>
+        <input type="text" aria-label="Model" class="form-control" placeholder="ie. 6S.155..." id="sModel">
 
-      <div class="input-group" id="PCBFilter">
         <span class="input-group-text">WAS. type:</span>
         <input type="text" aria-label="was" class="form-control" placeholder="ie. RHQ0013..." id="sWas">
 
-        <span class="input-group-text bg-info">PCB type:</span>
+      </div>
 
+      <div class="input-group mt-2" id="PCBFilter">
+        <span class="input-group-text bg-info">PCB type:</span>
       </div>
 
 
       <div class="input-group mt-2">
         <span class="input-group-text bg-secondary" id="DriverFilter">Driver:</span>
+      </div>
+      <div class="input-group mt-2">
         <span class="input-group-text bg-primary" id="ControllerFilter">Controller:</span>
       </div>
 
@@ -113,7 +115,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5">Configuration Record </h1>
-          <p class="fs-6 ms-4">a34124f</p>
+          <p class="fs-6 ms-4" id="recno"></p>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -364,44 +366,37 @@
       let f = document.querySelector("#record-form");
 
       // send it off - the password should never be retrieved to the form, so the back-end can handle the checking/rejection of valid pw
-      if (f.iPassword.value === f.iPassword.dataset.key) {
-        //build the url to the specific record
-        let url = urlstub + "updateDocument?id=" + document.querySelector("div#recordModal div.modal-header > p").innerHTML;
+      //build the url to the specific record
+      let url = urlstub + "updateDocument?id=" + document.querySelector("#recno").innerHTML;
 
-        //build the json object from the form data
-        let payload = {
-          discourse: f.iDiscourse.value,
-          telegram: f.iTelegram.value,
-          brand: f.iBrand.value,
-          model: f.iModel.value,
-          was: f.iWas.value,
-          pcb: f.ipcb.value,
-          driver: f.iDriver.value,
-          controller: f.iController.value,
-          comment: f.iComm.value,
-          password: f.password.value
-        };
+      //build the json object from the form data
+      let payload = {
+        DiscourseID: f.iDiscourse.value,
+        TelegramID: f.iTelegram.value,
+        setBrand_Tbrand: f.iBrand.value,
+        MachineModel: f.iModel.value,
+        WASType: f.iWas.value,
+        PCB: f.ipcb.value,
+        Driver: f.iDriver.value,
+        Controller: f.iController.value,
+        Comments: f.iComm.value,
+        password: f.iPassword.value
+      };
 
-        let data = new FormData();
-        data.append("json", JSON.stringify(payload));
+      let data = new FormData();
 
-        //send the data to the api
-        /* CORS issues in the API set-up
-        
-            fetch(url,{
-              method: "POST",
-              body: data
-            })
-            .then((res)=>{ return res.json(); })
-            .then((data)=>{ 
-              console.log( JSON.stringify( data ) );
-            	
-              //close the modal
-              document.querySelector("#btn-close").click();
-            }).catch(console.error);
-        
-        */
-      }
+      //send the data to the api
+      fetch(url, {
+        method: "POST",
+        body: JSON.stringify(payload) //data
+      })
+        .then((res) => { return res.json(); })
+        .then((data) => {
+          console.log(JSON.stringify(payload));
+
+          //close the modal
+          document.querySelector("#btn-close").click();
+        }).catch(console.error);
     }
 
 
@@ -413,39 +408,52 @@
       if (f.sTelegram.value) url += "TelegramID=" + f.sTelegram.value + "&";
       if (f.iBrandFilter.selectedIndex > 0) url += "setBrand_TBrand=" + f.iBrandFilter.value + "&";
       if (f.sModel.value) url += "MachineModel=" + f.sModel.value + "&";
-      if (f.sWas.value) url += "WASType=" + f.sWas.value;
+      if (f.sWas.value) url += "WASType=" + f.sWas.value + "&";
 
+      var els = f.querySelectorAll('.btn-check');
+      els.forEach(ctrl =>  {
+        if (ctrl.id.indexOf("sPCB") !== -1) {
+          if (ctrl.checked) {
+            url += "PCB=" + ctrl.value + "&"
+          }
+        }
+      })
+      // need to work out how we dynamically build the URL for our variable buttons (eg AIO, ACE, CANBUS etc)
+      // how will we specify them - add only the ones that are ticked perhaps?
+      //if (f.)
       // request data from the api with fetch, like:
       //CORS issue to solve
+      const tableBody = document.querySelector("#data-table");
+      tableBody.innerHTML = '';
+      document.querySelector("table.data-table").classList.remove("d-none");
+
       fetch(url).then(r => r.json()) //converts the txt in json
-        .then(d => { //include data in the table
-          document.querySelector("table.data-table").classList.remove("d-none");
-          document.querySelector("#data-table").innerHTML += `
-          <tr data-id="${d.uniqueID}">
-            <td>${d.DiscourseID}</td>
-            <td>${d.TelegramID}</td>
-            <td>${d.setBrand_TBrand}</td>
-            <td>${d.MachineModel}</td>
-            <td>${d.WASType}</td>
-            <td>${d.PCB}</td>
-            <td>${d.Driver}</td>
-            <td>${d.Controller}</td>
+        .then(d => {
+          d.forEach(item => {
+            tableBody.innerHTML += `
+            <tr data-id="${item.uniqueID}">
+            <td onclick="showRecord(${item.uniqueID})">${item.DiscourseID}</td>
+            <td onclick="showRecord(${item.uniqueID})">${item.TelegramID}</td>
+            <td onclick="showRecord(${item.uniqueID})">${item.setBrand_TBrand}</td>
+            <td onclick="showRecord(${item.uniqueID})">${item.MachineModel}</td>
+            <td onclick="showRecord(${item.uniqueID})">${item.WASType}</td>
+            <td onclick="showRecord(${item.uniqueID})">${item.PCB}</td>
+            <td onclick="showRecord(${item.uniqueID})">${item.Driver}</td>
+            <td onclick="showRecord(${item.uniqueID})">${item.Controller}</td>
           </tr>`;
+
+          })
         }).catch(console.error);
 
       //display the data table
-      document.querySelector("table.data-table").classList.remove("d-none");
+      //document.querySelector("table.data-table").classList.remove("d-none");
 
-      // let t = document.querySelector("#data-table");
-      // t.innerHTML = "";// Reset the table
-
-
-      //add capabilities to retrieve and show details from a record
-      document.querySelectorAll("#data-table > tr").forEach(el => {
-        el.addEventListener("click", e => {
-          showRecord(el.dataset.id);
-        });
-      });
+      // //add capabilities to retrieve and show details from a record
+      // document.querySelectorAll("#data-table > tr").forEach(el => {
+      //   el.addEventListener("click", e => {
+      //     showRecord(el.dataset.id);
+      //   });
+      // });
 
     }
 
@@ -459,6 +467,7 @@
         .then(data => {
           //console.log(data);
 
+          document.querySelector("#recno").innerHTML = data.uniqueID;
           document.querySelector("#iDiscourse").value = data.DiscourseID;
           document.querySelector("#iTelegram").value = data.TelegramID;
           // take into account if harvester, tractor etc here? Or not needed
@@ -477,7 +486,7 @@
           document.querySelector("#pg").value = +data.setAS_Kp;
           document.querySelector("#ml").value = +data.setAS_highSteerPWM;
           document.querySelector("#mm").value = +data.setAS_minSteerPWM;
-          document.querySelector("#msa").value = +data.setVehicle_maxSteer;
+          document.querySelector("#msa").value = +data.setVehicle_maxSteerAngle;
 
           // Stanley
           document.querySelector("#sd").value = +data.stanleyDistanceErrorGain;
@@ -637,7 +646,6 @@
     sliders.forEach(function (sl) {
       if (typeof sl != "undefined") {
         sl.addEventListener('change', function () {
-          //var sl = this.event.target;
           var label = document.querySelector("#" + this.id + "-value");
           label.textContent = "(" + sl.value + ")";
         });
