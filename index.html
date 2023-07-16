@@ -445,16 +445,6 @@
           })
         }).catch(console.error);
 
-      //display the data table
-      //document.querySelector("table.data-table").classList.remove("d-none");
-
-      // //add capabilities to retrieve and show details from a record
-      // document.querySelectorAll("#data-table > tr").forEach(el => {
-      //   el.addEventListener("click", e => {
-      //     showRecord(el.dataset.id);
-      //   });
-      // });
-
     }
 
     function showRecord(id) {
@@ -474,11 +464,32 @@
           document.querySelector("#iBrand").value = data.setBrand_TBrand;
           document.querySelector("#iModel").value = data.MachineModel;
           document.querySelector("#iComm").value = data.Comments;
+          document.querySelector("#iWas").value = data.WASType;
 
+          // how to calculate the selectedIndex - can't store the number in case the models change order
+          // will need to be a text match
+          var children = document.querySelector("#ipcb").children;
+          for (x=0; x < children.length;x++) {
+            if (children[x].text == data.PCB) {
+              document.querySelector("#ipcb").selectedIndex = x;
+            }
+          }
+          var children = document.querySelector("#iDriver").children;
+          for (x=0; x < children.length;x++) {
+            if (children[x].text == data.Driver) {
+              document.querySelector("#iDriver").selectedIndex = x;
+            }
+          }
+          var children = document.querySelector("#iController").children;
+          for (x=0; x < children.length;x++) {
+            if (children[x].text == data.Controller) {
+              document.querySelector("#iController").selectedIndex = x;
+            }
+          }
 
           // these fields need scaled appropriately, and LABELLED
           // Steer
-          document.querySelector("#was").value = +data.setAS_wasOffset;
+          document.querySelector("#was").value = +data.setAS_wasOffset; // Offset is useless, discard it
           document.querySelector("#cpd").value = +data.setAS_countsPerDegree;
           document.querySelector("#ackermann").value = +data.setAS_ackerman;
 
