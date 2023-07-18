@@ -49,6 +49,8 @@
   </header>
 
   <main class="container mt-4">
+
+
     <form id="search-form">
       <div class="input-group">
         <span class="input-group-text">Discourse:</span>
@@ -62,7 +64,8 @@
           <option selected>Choose...</option>
         </select>
         <span class="input-group-text">V. Model:</span>
-        <input type="text" aria-label="Model" class="form-control" placeholder="ie. 6S.155..." id="sModel">
+        <input type="text" aria-label="Model" class="form-control" placeholder="ie. 6S.155..." id="sModel"
+          max-width="100">
 
         <span class="input-group-text">WAS. type:</span>
         <input type="text" aria-label="was" class="form-control" placeholder="ie. RHQ0013..." id="sWas">
@@ -73,12 +76,12 @@
         <span class="input-group-text bg-info">PCB type:</span>
       </div>
 
-
-      <div class="input-group mt-2">
-        <span class="input-group-text bg-secondary" id="DriverFilter">Driver:</span>
+      <div class="input-group mt-2" id="DriverFilter">
+        <span class="input-group-text bg-info">Driver:</span>
       </div>
-      <div class="input-group mt-2">
-        <span class="input-group-text bg-primary" id="ControllerFilter">Controller:</span>
+
+      <div class="input-group mt-2" id="ControllerFilter">
+        <span class="input-group-text bg-info">Controller:</span>
       </div>
 
       <button type="button" class="btn btn-primary my-4" id="btn-search">Search<span class="ms-4"><svg width="20"
@@ -119,6 +122,8 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+          <div class="alert alert-danger" id="errorAlert" style="display: none;" role="alert">
+          </div>
           <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
               <button class="nav-link aog-bg-tab  border-bottom-0" id="wheel-tab" data-bs-toggle="tab"
@@ -152,10 +157,9 @@
                 <span class="text-center mx-5 flex-grow-1">
 
                   <p class="fs-6 pt-3 m-0">WAS Zero
-                    <span class="value-label" id="was-value">50</span>
+                    <span class="value-label" id="was-value"></span>
                   </p>
-                  <input type="range" class="form-range" id="was" min="-4096" max="4096">
-                  <!-- the min/max of above relates to CPD value, take that into effect!! -->
+                  <p class="fs-6 pt-3 m-0">This is specific to your machine. Set accordingly.</p>
 
                   <p class="fs-6 pt-3 m-0">Counts per Degree
                     <span class="value-label" id="cpd-value">50</span>
@@ -323,12 +327,15 @@
                 </div>
 
                 <div class="row mb-3">
-                  <label for="iPassword" class="col-sm-2 col-form-label">Password</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" data-key="1" id="iPassword">
+                  <div class="form-floating">
+                    <!-- <label for="iPassword" class="col-sm-2 col-form-label">Password</label> -->
+                    <!-- <div class="col-sm-10"> -->
+                    <input type="text" class="form-control" data-key="1" id="iPassword" placeholder="here" required>
+                    <label for="iPassword">Password</label>
                     <p>Choose any password you like - it will be encrypted and stored in the database, and this record
                       can only be updated by supplying the same password. It's safe to use the same password for all
                       your machines.</p>
+                    <!-- </div> -->
                   </div>
                 </div>
               </form>
@@ -350,11 +357,10 @@
 
   <script src="./assets/js/bootstrap.bundle.min.js"></script>
   <script>
-    //const urlstub = "https://aogdb.azurewebsites.net/api/";
-    const urlstub = "http://localhost:7071/api/";
+    const urlstub = "https://aogdb.azurewebsites.net/api/";
+    //const urlstub = "http://localhost:7071/api/";
     document.querySelector("#btn-search").addEventListener("click", search);
     document.querySelector("#btn-save").addEventListener("click", save);
-
 
     function getParameterByName(name) {
       let regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
@@ -364,6 +370,10 @@
 
     function save() {
       let f = document.querySelector("#record-form");
+      if (f.iPassword.value == "") {
+        showError("To save, you must choose a password.",5000);
+        return;
+      }
 
       // send it off - the password should never be retrieved to the form, so the back-end can handle the checking/rejection of valid pw
       //build the url to the specific record
@@ -390,15 +400,35 @@
         method: "POST",
         body: JSON.stringify(payload) //data
       })
-        .then((res) => { return res.json(); })
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error("Password mismatch - you cannot update this record");
+          }
+          return res.json();
+        })
         .then((data) => {
           console.log(JSON.stringify(payload));
 
           //close the modal
           document.querySelector("#btn-close").click();
-        }).catch(console.error);
+        })
+        .catch((error) => {
+          showError(error, 5000);
+          console.error
+        }
+        );
     }
 
+    // Function to show the error message and auto-hide it after a few seconds
+    function showError(message, duration) {
+      const errorAlert = document.getElementById("errorAlert");
+      errorAlert.textContent = message;
+      errorAlert.style.display = "block";
+
+      setTimeout(function () {
+        errorAlert.style.display = "none";
+      }, duration);
+    }
 
     function search() {
       // from the form values create the json/url to request the data from the db
@@ -411,7 +441,7 @@
       if (f.sWas.value) url += "WASType=" + f.sWas.value + "&";
 
       var els = f.querySelectorAll('.btn-check');
-      els.forEach(ctrl =>  {
+      els.forEach(ctrl => {
         if (ctrl.id.indexOf("sPCB") !== -1) {
           if (ctrl.checked) {
             url += "PCB=" + ctrl.value + "&"
@@ -469,19 +499,19 @@
           // how to calculate the selectedIndex - can't store the number in case the models change order
           // will need to be a text match
           var children = document.querySelector("#ipcb").children;
-          for (x=0; x < children.length;x++) {
+          for (x = 0; x < children.length; x++) {
             if (children[x].text == data.PCB) {
               document.querySelector("#ipcb").selectedIndex = x;
             }
           }
           var children = document.querySelector("#iDriver").children;
-          for (x=0; x < children.length;x++) {
+          for (x = 0; x < children.length; x++) {
             if (children[x].text == data.Driver) {
               document.querySelector("#iDriver").selectedIndex = x;
             }
           }
           var children = document.querySelector("#iController").children;
-          for (x=0; x < children.length;x++) {
+          for (x = 0; x < children.length; x++) {
             if (children[x].text == data.Controller) {
               document.querySelector("#iController").selectedIndex = x;
             }
@@ -489,7 +519,7 @@
 
           // these fields need scaled appropriately, and LABELLED
           // Steer
-          document.querySelector("#was").value = +data.setAS_wasOffset; // Offset is useless, discard it
+          //document.querySelector("#was").value = +data.setAS_wasOffset; // Offset is useless, discard it
           document.querySelector("#cpd").value = +data.setAS_countsPerDegree;
           document.querySelector("#ackermann").value = +data.setAS_ackerman;
 
@@ -513,11 +543,10 @@
           document.querySelector("#iPassword").dataset.key = "NOT TELLING";
 
           updateAllSliders();
-
+          
           //show modal
           const myModal = new bootstrap.Modal('#recordModal');
           myModal.show();
-
         }).catch(console.error);
     }
 
