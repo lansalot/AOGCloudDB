@@ -357,8 +357,9 @@
 
   <script src="./assets/js/bootstrap.bundle.min.js"></script>
   <script>
-    const urlstub = "https://aogdb.azurewebsites.net/api/";
+    //const urlstub = "https://aogdb.azurewebsites.net/api/";
     //const urlstub = "http://localhost:7071/api/";
+    const urlstub = "http://192.168.1.94:5000/";
     document.querySelector("#btn-search").addEventListener("click", search);
     document.querySelector("#btn-save").addEventListener("click", save);
 
@@ -520,25 +521,25 @@
           // these fields need scaled appropriately, and LABELLED
           // Steer
           //document.querySelector("#was").value = +data.setAS_wasOffset; // Offset is useless, discard it
-          document.querySelector("#cpd").value = +data.setAS_countsPerDegree;
-          document.querySelector("#ackermann").value = +data.setAS_ackerman;
+          document.querySelector("#cpd").value = data[0].setAS_countsPerDegree;
+          document.querySelector("#ackermann").value = data[0].setAS_ackerman;
 
           // PWM
-          document.querySelector("#pg").value = +data.setAS_Kp;
-          document.querySelector("#ml").value = +data.setAS_highSteerPWM;
-          document.querySelector("#mm").value = +data.setAS_minSteerPWM;
-          document.querySelector("#msa").value = +data.setVehicle_maxSteerAngle;
+          document.querySelector("#pg").value = data[0].setAS_Kp;
+          document.querySelector("#ml").value = data[0].setAS_highSteerPWM;
+          document.querySelector("#mm").value = data[0].setAS_minSteerPWM;
+          document.querySelector("#msa").value = data[0].setVehicle_maxSteerAngle;
 
           // Stanley
-          document.querySelector("#sd").value = +data.stanleyDistanceErrorGain;
-          document.querySelector("#sh").value = +data.stanleyHeadingErrorGain;
-          document.querySelector("#si").value = +data.stanleyIntegralGainAB;
+          document.querySelector("#sd").value = data[0].stanleyDistanceErrorGain;
+          document.querySelector("#sh").value = data[0].stanleyHeadingErrorGain;
+          document.querySelector("#si").value = data[0].stanleyIntegralGainAB;
 
           // Pure Pursuit
-          document.querySelector("#ppala").value = +data.setVehicle_goalPointLookAhead;
-          document.querySelector("#pphla").value = +data.setVehicle_toolLookAheadOn;
-          document.querySelector("#ppsg").value = +data.setVehicle_goalPointLookAheadMult;
-          document.querySelector("#ppi").value = +data.purePursuitIntegralGainAB;
+          document.querySelector("#ppala").value = data[0].setVehicle_goalPointLookAhead;
+          document.querySelector("#pphla").value = data[0].setVehicle_toolLookAheadOn;
+          document.querySelector("#ppsg").value = data[0].setVehicle_goalPointLookAheadMult;
+          document.querySelector("#ppi").value = data[0].purePursuitIntegralGainAB;
 
           document.querySelector("#iPassword").dataset.key = "NOT TELLING";
 
