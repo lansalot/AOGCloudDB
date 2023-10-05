@@ -488,32 +488,32 @@
         .then(data => {
           //console.log(data);
 
-          document.querySelector("#recno").innerHTML = data.uniqueID;
-          document.querySelector("#iDiscourse").value = data.DiscourseID;
-          document.querySelector("#iTelegram").value = data.TelegramID;
+          document.querySelector("#recno").innerHTML = data[0].uniqueID;
+          document.querySelector("#iDiscourse").value = data[0].DiscourseID;
+          document.querySelector("#iTelegram").value = data[0].TelegramID;
           // take into account if harvester, tractor etc here? Or not needed
-          document.querySelector("#iBrand").value = data.setBrand_TBrand;
-          document.querySelector("#iModel").value = data.MachineModel;
-          document.querySelector("#iComm").value = data.Comments;
-          document.querySelector("#iWas").value = data.WASType;
+          document.querySelector("#iBrand").value = data[0].setBrand_TBrand;
+          document.querySelector("#iModel").value = data[0].MachineModel;
+          document.querySelector("#iComm").value = data[0].Comments;
+          document.querySelector("#iWas").value = data[0].WASType;
 
           // how to calculate the selectedIndex - can't store the number in case the models change order
           // will need to be a text match
           var children = document.querySelector("#ipcb").children;
           for (x = 0; x < children.length; x++) {
-            if (children[x].text == data.PCB) {
+            if (children[x].text == data[0].PCB) {
               document.querySelector("#ipcb").selectedIndex = x;
             }
           }
           var children = document.querySelector("#iDriver").children;
           for (x = 0; x < children.length; x++) {
-            if (children[x].text == data.Driver) {
+            if (children[x].text == data[0].Driver) {
               document.querySelector("#iDriver").selectedIndex = x;
             }
           }
           var children = document.querySelector("#iController").children;
           for (x = 0; x < children.length; x++) {
-            if (children[x].text == data.Controller) {
+            if (children[x].text == data[0].Controller) {
               document.querySelector("#iController").selectedIndex = x;
             }
           }
